@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>С Днем Рождения — Брат!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- starfield canvas -->
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header>
+  <h1><span class="neon">🎉 С Днём Рождения, брат! 🎉</span></h1>
+  <div class="subtitle">Сегодня твой день — Будь как Звезда Бро</div>
+</header>
+
+<div class="wrap">
+
+  <!-- Wishes -->
+  <div class="wishes" id="wishes">
+    <h2>Бро, мы с тобой прошли 17 лет дружбы 🙌</h2>
+    <p>И за всё это время я по-настоящему понял — ты для меня не просто друг, а настоящий брат.
+    Спасибо тебе за все моменты, за смех, поддержку и то, что всегда рядом.</p>
+    <p>Я искренне надеюсь, что в твоей жизни всегда всё будет гуд 💯
+    Чтобы удача не подводила, здоровье было крепким, а радости и благ хватало с запасом.</p>
+    <p>Мы уже апнули 2000к ело, и я знаю — апнём ещё больше 🚀
+    Ты достоин только побед, бро.</p>
+    <p>Удачи тебе во всём, крепкого фарта и мощнейших апов.
+    Обнял 🤝❤️</p>
+
+    <div class="controls">
+      <button class="btn primary" id="launchFireBtn">Запустить Салют 🎆</button>
+      <button class="btn" id="photoFlyBtn">Фотки взлететь ✨</button>
+      <button class="btn" id="toggleHeartsBtn">Сердечки ❤️</button>
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery-wrap">
+    <div class="gallery" id="gallery">
+      <div class="photo" data-src="images/photo1.jpg"><img src="images/photo1.jpg" alt="photo1"></div>
+      <div class="photo" data-src="images/photo2.jpg"><img src="images/photo2.jpg" alt="photo2"></div>
+      <div class="photo center" data-src="images/photo3.jpg"><img src="images/photo3.jpg" alt="photo3"></div>
+      <div class="photo" data-src="images/photo4.jpg"><img src="images/photo4.jpg" alt="photo4"></div>
+      <div class="photo" data-src="images/photo5.jpg"><img src="images/photo5.jpg" alt="photo5"></div>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<div class="modal" id="modal"><div class="box"><img id="modalImg" src="" alt=""></div></div>
+
+<!-- particles canvas -->
+<canvas class="mini-canvas" id="miniCanvas"></canvas>
+
+<!-- audio bar -->
+<div class="audio-bar" id="audioBar">
+  <button class="audio-btn" id="audioToggle">▶</button>
+  <div style="display:flex;flex-direction:column; gap:4px;">
+    <div class="audio-info" id="audioTitle">ivoxygen — Nefelibata</div>
+    <div class="progress">
+      <div id="audioProgress"></div>
+    </div>
+  </div>
+</div>
+
+<!-- hidden soundcloud player -->
+<iframe id="scPlayer" width="100%" height="0" scrolling="no" frameborder="no" allow="autoplay"
+  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/senngodx/ivoxygen-nefelibata&auto_play=false&visual=false&hide_related=true&show_user=false">
+</iframe>
+
+<!-- подпись -->
+<div class="signature">
+  сделано by <span>FronZ1</span> for u ❤️
+</div>
+
+<script src="https://w.soundcloud.com/player/api.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
