@@ -182,13 +182,30 @@ header {
   .btn { flex:1 1 100%; }
   .progress { width:120px; }
 }
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.gallery .photo {
+  width: 200px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
 .gallery .photo img {
-  height: 250px !important;   /* одинаковая высота */
-  width: auto !important;     /* ширина подстраивается */
-  object-fit: cover !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
-  transition: transform 0.3s ease !important;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery .photo img:hover {
+  transform: scale(1.05);
 }
 
 
