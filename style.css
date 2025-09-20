@@ -82,7 +82,9 @@ header {
   transition: transform 0.3s;
 }
 .photo img {
-  width: 100%;
+  width: 150%;
+  height: 200px;      /* одинаковая высота */
+  object-fit: cover;  /* чтобы фотка не тянулась, а ровно обрезалась */
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.6);
 }
@@ -182,31 +184,7 @@ header {
   .btn { flex:1 1 100%; }
   .progress { width:120px; }
 }
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
 
-.gallery .photo {
-  width: 200px;
-  height: 250px;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-
-.gallery .photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.gallery .photo img:hover {
-  transform: scale(1.05);
-}
 
 
 
