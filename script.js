@@ -1,34 +1,36 @@
 // === ЗВЕЗДНОЕ НЕБО ===
-const starCanvas = document.getElementById("starfield");
-const starCtx = starCanvas.getContext("2d");
+const starfield = document.getElementById("starfield");
+const starCtx = starfield.getContext("2d");
 let stars = [];
 
 function resizeStars() {
-  starCanvas.width = window.innerWidth;
-  starCanvas.height = window.innerHeight;
+  starfield.width = window.innerWidth;
+  starfield.height = window.innerHeight;
   stars = Array.from({ length: 200 }, () => ({
-    x: Math.random() * starCanvas.width,
-    y: Math.random() * starCanvas.height,
+    x: Math.random() * starfield.width,
+    y: Math.random() * starfield.height,
     r: Math.random() * 2,
     d: Math.random() * 0.5
   }));
 }
+
 resizeStars();
 window.addEventListener("resize", resizeStars);
 
 function drawStars() {
-  starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+  starCtx.clearRect(0, 0, starfield.width, starfield.height);
   starCtx.fillStyle = "white";
   stars.forEach(s => {
     starCtx.beginPath();
     starCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     starCtx.fill();
     s.y += s.d;
-    if (s.y > starCanvas.height) s.y = 0;
+    if (s.y > starfield.height) s.y = 0;
   });
   requestAnimationFrame(drawStars);
 }
 drawStars();
+
 
 // === ФОТОГАЛЕРЕЯ + МОДАЛ ===
 const modal = document.getElementById("modal");
@@ -140,6 +142,7 @@ addBtnHandler("toggleHeartsBtn", () => {
   heartsEnabled = !heartsEnabled;
   if (heartsEnabled) spawnHearts();
 });
+
 
 
 
