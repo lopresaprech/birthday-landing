@@ -130,6 +130,25 @@ audioToggle.onclick=()=>{
 widget.bind(SC.Widget.Events.PLAY_PROGRESS,(e)=>{
   audioProgress.style.width=(e.relativePosition*100)+"%";
 });
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+const closeBtn = document.querySelector(".lightbox .close");
+
+document.querySelectorAll(".photo img").forEach(img => {
+  img.addEventListener("click", () => {
+    modal.style.display = "block";
+    modalImg.src = img.dataset.src || img.src;
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) modal.style.display = "none";
+});
+
 
 
 
