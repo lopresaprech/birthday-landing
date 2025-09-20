@@ -72,10 +72,10 @@ header {
 }
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* динамика */
+  gap: 10px;
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 20px auto;
   padding: 0 10px;
 }
 
@@ -88,10 +88,12 @@ header {
 
 .photo img {
   width: 100%;
-  height: 250px; /* фиксируем высоту */
-  object-fit: cover;
+  height: auto;         /* убираем фиксированную высоту */
+  aspect-ratio: 1 / 1;  /* квадратные фотки */
+  object-fit: cover;    /* обрезаем красиво */
   display: block;
 }
+
 
 .photo:hover {
   transform: scale(1.05);
@@ -218,6 +220,7 @@ header {
   color: white;
   cursor: pointer;
 }
+
 
 
 
