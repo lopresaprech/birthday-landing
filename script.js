@@ -29,18 +29,21 @@ function drawStars(){
 drawStars();
 
 // === ФОТОГАЛЕРЕЯ + МОДАЛ ===
-const modal = document.getElementById("lightbox");
-const modalImg = document.getElementById("lightbox-img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
 
 document.querySelectorAll(".photo img").forEach(ph => {
   ph.addEventListener("click", () => {
-    modal.style.display = "block"; // показываем оверлей
-    modalImg.src = ph.src; // вставляем картинку
+    lightbox.style.display = "block"; // показываем окно
+    lightboxImg.src = ph.src; // вставляем выбранное фото
   });
 });
 
-modal.addEventListener("click", () => {
-  modal.style.display = "none"; // скрываем при клике
+// Закрытие при клике на фон или крестик
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox || e.target.classList.contains("close")) {
+    lightbox.style.display = "none";
+  }
 });
 
 
@@ -127,5 +130,6 @@ audioToggle.onclick=()=>{
 widget.bind(SC.Widget.Events.PLAY_PROGRESS,(e)=>{
   audioProgress.style.width=(e.relativePosition*100)+"%";
 });
+
 
 
