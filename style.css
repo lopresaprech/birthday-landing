@@ -183,16 +183,19 @@ header {
   .progress { width:120px; }
 }
 .gallery .photo img {
-  width: 200px;
   height: 250px;
+  width: auto; /* ширина подстраивается */
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   transition: transform 0.3s ease;
 }
-
-.gallery .photo img:hover {
-  transform: scale(1.05);
+.gallery {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* выравнивает по нижней линии */
+  gap: 15px; /* расстояние между фотками */
 }
+
 
 
