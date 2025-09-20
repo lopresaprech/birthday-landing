@@ -37,20 +37,21 @@
     </div>
   </div>
 
-  <!-- Gallery -->
-  <div class="gallery-wrap">
-    <div class="gallery" id="gallery">
-    <div class="photo"><img src="photo1.jpg" alt="photo1"></div>
-<div class="photo"><img src="photo2.jpg" alt="photo2"></div>
-<div class="photo center"><img src="photo3.jpg" alt="photo3"></div>
-<div class="photo"><img src="photo4.jpg" alt="photo4"></div>
-<div class="photo"><img src="photo5.jpg" alt="photo5"></div>
-    </div>
-  </div>
+ <!-- Галерея -->
+<div class="gallery">
+  <div class="photo"><img src="photo1.jpg" data-src="photo1.jpg" alt="photo1"></div>
+  <div class="photo"><img src="photo2.jpg" data-src="photo2.jpg" alt="photo2"></div>
+  <div class="photo"><img src="photo3.jpg" data-src="photo3.jpg" alt="photo3"></div>
+  <div class="photo"><img src="photo4.jpg" data-src="photo4.jpg" alt="photo4"></div>
+  <div class="photo"><img src="photo5.jpg" data-src="photo5.jpg" alt="photo5"></div>
 </div>
 
-<!-- modal -->
-<div class="modal" id="modal"><div class="box"><img id="modalImg" src="" alt=""></div></div>
+<!-- Модалка -->
+<div id="modal" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="modalImg">
+</div>
+
 
 <!-- particles canvas -->
 <canvas class="mini-canvas" id="miniCanvas"></canvas>
@@ -86,6 +87,7 @@ by <span>FronZ1</span> for w1nforze ❤️
 
 </body>
 </html>
+
 
 
 
