@@ -29,15 +29,20 @@ function drawStars(){
 drawStars();
 
 // === ФОТОГАЛЕРЕЯ + МОДАЛ ===
-const modal=document.getElementById("modal");
-const modalImg=document.getElementById("modalImg");
-document.querySelectorAll(".photo").forEach(ph=>{
-  ph.addEventListener("click",()=>{
-    modal.classList.add("active");
-    modalImg.src=ph.dataset.src;
+const modal = document.getElementById("lightbox");
+const modalImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".photo img").forEach(ph => {
+  ph.addEventListener("click", () => {
+    modal.style.display = "block"; // показываем оверлей
+    modalImg.src = ph.src; // вставляем картинку
   });
 });
-modal.addEventListener("click",()=>modal.classList.remove("active"));
+
+modal.addEventListener("click", () => {
+  modal.style.display = "none"; // скрываем при клике
+});
+
 
 // === САЛЮТЫ / ЧАСТИЦЫ ===
 const miniCanvas=document.getElementById("miniCanvas");
@@ -122,4 +127,5 @@ audioToggle.onclick=()=>{
 widget.bind(SC.Widget.Events.PLAY_PROGRESS,(e)=>{
   audioProgress.style.width=(e.relativePosition*100)+"%";
 });
+
 
