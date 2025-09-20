@@ -156,6 +156,14 @@ closeBtn.addEventListener("click", () => {
 modal.addEventListener("click", (e) => {
   if (e.target === modal) modal.style.display = "none";
 });
+// кнопка "Фотки взлететь ✨"
+const photoFlyBtn = document.getElementById("photoFlyBtn");
+
+if (photoFlyBtn) {
+  photoFlyBtn.addEventListener("click", () => window.__photoFly());
+  photoFlyBtn.addEventListener("touchstart", () => window.__photoFly());
+}
+
 
 
 
