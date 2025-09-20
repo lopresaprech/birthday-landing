@@ -32,11 +32,19 @@ drawStars();
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 
-document.querySelectorAll(".photo img").forEach(ph => {
-  ph.addEventListener("click", () => {
-    lightbox.style.display = "block"; // показываем окно
-    lightboxImg.src = ph.src; // вставляем выбранное фото
+// открытие картинки
+document.querySelectorAll(".photo img").forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex"; // чтобы центрировалось
+    lightboxImg.src = img.src;
   });
+});
+
+// закрытие по клику на фон или крестик
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox || e.target.classList.contains("close")) {
+    lightbox.style.display = "none";
+  }
 });
 
 // Закрытие при клике на фон или крестик
@@ -148,6 +156,7 @@ closeBtn.addEventListener("click", () => {
 modal.addEventListener("click", (e) => {
   if (e.target === modal) modal.style.display = "none";
 });
+
 
 
 
