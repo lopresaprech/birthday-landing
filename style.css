@@ -221,18 +221,16 @@ header {
   cursor: pointer;
 }
 
-.wishes {
+#wishes {
   border: 2px solid #00ffff;       /* неоновая рамка */
-  border-radius: 15px;             /* скруглённые углы */
-  padding: 25px;                   /* отступы внутри */
-  margin: 30px auto;               /* сверху/снизу отступы */
-  max-width: 800px;                /* ограничение ширины */
-  background: rgba(0, 0, 0, 0.55); /* затемнённый фон */
-  color: #fff;                     /* белый текст */
-  text-align: center;              /* центрирование текста */
+  border-radius: 15px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 800px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  text-align: center;
   line-height: 1.6;
-
-  /* свечение + анимация */
   box-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff;
   animation: pulse-glow 3s infinite ease-in-out;
 }
@@ -242,6 +240,7 @@ header {
   50%  { box-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff; }
   100% { box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
 }
+
 
 
 
