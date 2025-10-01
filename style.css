@@ -78,11 +78,31 @@ header {
   text-align: center;
 }
 .photo img {
-  width: 100%;
+  width: 250px; /* уменьшил размер */
+  max-width: 90%;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255,105,180,0.5);
+  border: 3px solid #ff69b4; /* розовая рамка */
+  box-shadow: 0 0 25px rgba(255,105,180,0.7); /* мягкое розовое свечение */
   cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
+.photo img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(255,105,180,1);
+}
+
+.from-padawan {
+  margin-top: 20px;
+  font-style: italic;
+  color: #ff69b4;
+  text-shadow: 0 0 8px #ff69b4, 0 0 20px #ff1493;
+  font-size: 1.1rem; /* чуть больше текста */
+  line-height: 1.5;
+  background: rgba(255,105,180,0.1); /* лёгкий розовый фон */
+  padding: 12px;
+  border-radius: 12px;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -158,3 +178,4 @@ header {
   .btn { flex:1 1 100%; }
   .progress { width:120px; }
 }
+
