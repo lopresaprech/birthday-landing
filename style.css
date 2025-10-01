@@ -1,173 +1,116 @@
-body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: #000;
-  color: #fff;
-  overflow-x: hidden;
+// === ЗВЕЗДНОЕ НЕБО ===
+const starfield = document.getElementById("starfield");
+const starCtx = starfield.getContext("2d");
+let stars = [];
+function resizeStars() {
+  starfield.width = window.innerWidth;
+  starfield.height = window.innerHeight;
+  stars = Array.from({ length: 200 }, () => ({
+    x: Math.random() * starfield.width,
+    y: Math.random() * starfield.height,
+    r: Math.random() * 2,
+    d: Math.random() * 0.5
+  }));
 }
-#starfield {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+resizeStars();
+window.addEventListener("resize", resizeStars);
+function drawStars() {
+  starCtx.clearRect(0, 0, starfield.width, starfield.height);
+  starCtx.fillStyle = "white";
+  stars.forEach(s => {
+    starCtx.beginPath();
+    starCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    starCtx.fill();
+    s.y += s.d;
+    if (s.y > starfield.height) s.y = 0;
+  });
+  requestAnimationFrame(drawStars);
 }
-header {
-  text-align: center;
-  margin-top: 30px;
+drawStars();
+
+// === САЛЮТ ===
+const miniCanvas = document.getElementById("miniCanvas");
+const mCtx = miniCanvas.getContext("2d");
+miniCanvas.width = window.innerWidth;
+miniCanvas.height = window.innerHeight;
+let particles = [];
+function launchFirework() {
+  const x = Math.random() * miniCanvas.width;
+  const y = Math.random() * miniCanvas.height / 2;
+  for (let i = 0; i < 100; i++) {
+    particles.push({
+      x, y,
+      vx: (Math.random() - 0.5) * 5,
+      vy: (Math.random() - 0.5) * 5,
+      life: 100,
+      color: `hsl(${Math.random() * 360},100%,50%)`
+    });
+  }
 }
-.neon {
-  color: #fff;
-  text-shadow: 0 0 10px #ff4fa3, 0 0 25px #ff69b4, 0 0 40px #ff1493;
+function drawParticles() {
+  mCtx.clearRect(0, 0, miniCanvas.width, miniCanvas.height);
+  particles.forEach((p, i) => {
+    p.x += p.vx; p.y += p.vy; p.life--;
+    mCtx.fillStyle = p.color;
+    mCtx.fillRect(p.x, p.y, 2, 2);
+    if (p.life <= 0) particles.splice(i, 1);
+  });
+  requestAnimationFrame(drawParticles);
 }
-.subtitle {
-  margin-top: 10px;
-  color: #ff99cc;
+drawParticles();
+
+// === МОДАЛ ФОТО ===
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+document.querySelectorAll(".photo img").forEach(ph => {
+  ph.addEventListener("click", () => {
+    modal.classList.add("active");
+    modalImg.src = ph.src;
+  });
+});
+modal.addEventListener("click", () => modal.classList.remove("active"));
+
+// === HEARTS ===
+let heartsEnabled = false;
+function spawnHearts() {
+  if (!heartsEnabled) return;
+  const heart = document.createElement("div");
+  heart.textContent = "❤️";
+  heart.style.position = "fixed";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.top = "100vh";
+  heart.style.fontSize = "20px";
+  heart.style.transition = "all 4s linear";
+  document.body.appendChild(heart);
+  setTimeout(() => { heart.style.top = "-10vh"; heart.style.opacity = 0; }, 100);
+  setTimeout(() => heart.remove(), 4000);
+  setTimeout(spawnHearts, 500);
 }
-.wrap {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+
+// === AUDIO BAR ===
+const scIframe = document.getElementById("scPlayer");
+const widget = SC.Widget(scIframe);
+const audioToggle = document.getElementById("audioToggle");
+const audioProgress = document.getElementById("audioProgress");
+let playing = false;
+audioToggle.onclick = () => {
+  if (playing) { widget.pause(); audioToggle.textContent = "▶"; }
+  else { widget.play(); audioToggle.textContent = "⏸"; }
+  playing = !playing;
+};
+widget.bind(SC.Widget.Events.PLAY_PROGRESS, (e) => {
+  audioProgress.style.width = (e.relativePosition * 100) + "%";
+});
+
+// === BUTTONS ===
+function addBtnHandler(id, handler) {
+  const btn = document.getElementById(id);
+  if (!btn) return;
+  ["click","touchstart"].forEach(ev => btn.addEventListener(ev, handler));
 }
-.wishes {
-  border: 2px solid #ff4fa3;
-  border-radius: 15px;
-  padding: 25px;
-  margin: 30px auto;
-  max-width: 800px;
-  background: rgba(0, 0, 0, 0.55);
-  text-align: center;
-  box-shadow: 0 0 25px #ff4fa3, 0 0 50px #ff69b4;
-  animation: pulse-glow 3s infinite ease-in-out;
-}
-@keyframes pulse-glow {
-  0%   { box-shadow: 0 0 15px #ff4fa3, 0 0 30px #ff69b4; }
-  50%  { box-shadow: 0 0 35px #ff69b4, 0 0 60px #ff1493; }
-  100% { box-shadow: 0 0 15px #ff4fa3, 0 0 30px #ff69b4; }
-}
-.from-padawan {
-  margin-top: 20px;
-  font-style: italic;
-  color: #ff99cc;
-  text-shadow: 0 0 10px #ff66b2, 0 0 25px #ff1493;
-  animation: neon-glow 2s infinite alternate;
-}
-@keyframes neon-glow {
-  from { text-shadow: 0 0 10px #ff66b2, 0 0 25px #ff1493; }
-  to   { text-shadow: 0 0 20px #ff99cc, 0 0 40px #ff4fa3; }
-}
-.controls {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.btn {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #222;
-  color: #fff;
-  transition: 0.3s;
-}
-.btn:hover { background: #444; }
-.btn.primary {
-  background: #ff4fa3;
-  color: #fff;
-  box-shadow: 0 0 10px #ff4fa3, 0 0 25px #ff69b4;
-}
-.btn.primary:hover {
-  background: #ff66b2;
-}
-.gallery {
-  margin: 20px auto;
-  max-width: 300px; /* уменьшил размер фото */
-  text-align: center;
-}
-.photo img {
-  width: 100%;
-  border-radius: 12px;
-  border: 3px solid #ff4fa3; /* розовая рамка */
-  box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
-  cursor: pointer;
-}
-.modal {
-  display: none;
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.8);
-  align-items:center;
-  justify-content:center;
-  z-index: 1000;
-}
-.modal.active { display:flex; }
-.modal img {
-  max-width:90%;
-  max-height:90%;
-  border-radius:10px;
-}
-.mini-canvas {
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  pointer-events: none;
-  z-index: 10;
-}
-.audio-bar {
-  position: fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background:rgba(0,0,0,0.6);
-  padding:10px 15px;
-  border-radius:12px;
-  box-shadow:0 0 10px rgba(0,0,0,0.5);
-  z-index: 2000;
-}
-.audio-btn {
-  background:none;
-  border:none;
-  color:#ff69b4;
-  font-size:20px;
-  cursor:pointer;
-}
-.progress {
-  width:200px;
-  height:5px;
-  background:#333;
-  border-radius:3px;
-  overflow:hidden;
-}
-#audioProgress {
-  height:100%;
-  width:0;
-  background:#ff69b4;
-}
-.signature {
-  text-align:center;
-  margin-top:60px;
-  padding:15px;
-  font-size:0.9rem;
-  color:#faa;
-  font-family:monospace;
-  opacity:0.8;
-  animation: glow 3s ease-in-out infinite;
-}
-.signature span { color:#fff; font-weight:700; }
-@keyframes glow {
-  0%,100% { text-shadow: 0 0 6px #ff69b4, 0 0 12px #ff69b4; opacity:0.9; }
-  50% { text-shadow: 0 0 16px #ff1493, 0 0 32px #ff69b4; opacity:1; }
-}
-@media (max-width:640px) {
-  .btn { flex:1 1 100%; }
-  .progress { width:120px; }
-  .gallery { max-width: 220px; } /* ещё меньше фото на телефоне */
-}
+addBtnHandler("launchFireBtn", () => launchFirework());
+addBtnHandler("toggleHeartsBtn", () => {
+  heartsEnabled = !heartsEnabled;
+  if (heartsEnabled) spawnHearts();
+});
 
