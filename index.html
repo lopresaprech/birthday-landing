@@ -4,18 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Поздравляем с свадьбой!</title>
-  <!-- CSS первым -->
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+  <!-- Fireworks.js -->
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js/dist/fireworks.js"></script>
 </head>
 <body>
+  <!-- Звёзды -->
   <canvas id="starfield" aria-hidden="true"></canvas>
 
+  <!-- Заголовок -->
   <header>
     <h1><span class="neon">💖 Поздравляем с свадьбой! 💖</span></h1>
     <div class="subtitle">Пусть любовь сияет, как звёзды на небе ✨</div>
   </header>
 
+  <!-- Основной блок -->
   <div class="wrap">
+    <!-- Пожелания -->
     <div class="wishes" id="wishes">
       <h2>Счастья и любви вам обоим!</h2>
       <p>Пусть ваша любовь горит, как этот фон!<br>
@@ -35,15 +41,16 @@
       </div>
     </div>
 
+    <!-- Галерея -->
     <div class="gallery">
       <div class="photo"><img src="photo.jpg" alt="photo"></div>
     </div>
   </div>
 
+  <!-- Модальное окно для фото -->
   <div id="modal" class="modal"><img id="modalImg"></div>
 
-  <canvas class="mini-canvas" id="miniCanvas"></canvas>
-
+  <!-- Аудиоплеер -->
   <div class="audio-bar" id="audioBar">
     <button class="audio-btn" id="audioToggle">▶</button>
     <div style="display:flex;flex-direction:column; gap:4px;">
@@ -55,13 +62,15 @@
     src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ivoxxxygen/young-kid-flexxone-beats-remix&auto_play=false&visual=false">
   </iframe>
 
-  <div class="signature">От подававана — молодожёнам ✨</div>
+  <!-- Подпись -->
+  <div class="signature">От падавана — молодожёнам ✨</div>
 
-  <!-- Скрипты в конце body -->
- <script src="https://cdn.jsdelivr.net/npm/fireworks-js/dist/fireworks.js"></script>
+  <!-- Скрипты -->
+  <script src="https://w.soundcloud.com/player/api.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>
+
 
 
 
