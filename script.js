@@ -113,3 +113,4 @@ addBtnHandler("toggleHeartsBtn", () => {
   heartsEnabled = !heartsEnabled;
   if (heartsEnabled) spawnHearts();
 });
+
