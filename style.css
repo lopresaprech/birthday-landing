@@ -72,7 +72,6 @@ header {
 }
 .btn:hover { background: #444; }
 .btn.primary { background: #ff69b4; color: #000; }
-
 .gallery {
   margin: 20px auto;
   max-width: 400px;
@@ -84,7 +83,6 @@ header {
   box-shadow: 0 0 15px rgba(255,105,180,0.5);
   cursor: pointer;
 }
-
 .modal {
   display: none;
   position: fixed;
@@ -101,7 +99,6 @@ header {
   max-height:90%;
   border-radius:10px;
 }
-
 .mini-canvas {
   position: fixed;
   top:0; left:0;
