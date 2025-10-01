@@ -93,8 +93,8 @@ function createFirework(x, y) {
     particles.push({
       x: x,
       y: y,
-      vx: (Math.random() - 0.5) * 8,
-      vy: (Math.random() - 0.5) * 8,
+      vx: (Math.random() - 3.5) * 8,
+      vy: (Math.random() - 3.5) * 8,
       alpha: 1,
       color: `hsl(${Math.random()*360}, 100%, 60%)`
     });
@@ -161,5 +161,6 @@ window.addEventListener("load", () => {
     }
   });
 });
+
 
 
