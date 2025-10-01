@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Поздравляем с свадьбой!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header>
+  <h1><span class="neon">💖 Поздравляем с свадьбой! 💖</span></h1>
+  <div class="subtitle">Пусть любовь сияет, как звёзды на небе ✨</div>
+</header>
+
+<div class="wrap">
+  <div class="wishes" id="wishes">
+    <h2>Счастья и любви вам обоим!</h2>
+    <p>Пусть ваша любовь горит, как этот фон!  
+    Пусть жизнь будет музыкой, звучащей без пауз.  
+    Счастья, любви и побед!</p>
+
+    <p class="from-padawan">
+      Хоть я вас долго не знаю, но Макс трепает и за меня нервы ты уж прости 😅<br>
+      Я быстро учусь, надеюсь, он тоже так считает.<br>
+      Спасибо тебе за всё время, которое будешь проводить со мной Макс 🙏<br>
+      Желаю настоящего счастья тебе :)
+    </p>
+
+    <div class="controls">
+      <button class="btn primary" id="launchFireBtn">Запустить Салют 🎆</button>
+      <button class="btn" id="toggleHeartsBtn">Сердечки ❤️</button>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <div class="photo"><img src="photo.jpg" alt="photo"></div>
+  </div>
+</div>
+
+<!-- модал -->
+<div id="modal" class="modal"><img id="modalImg"></div>
+
+<!-- частицы -->
+<canvas class="mini-canvas" id="miniCanvas"></canvas>
+
+<!-- музыка -->
+<div class="audio-bar" id="audioBar">
+  <button class="audio-btn" id="audioToggle">▶</button>
+  <div style="display:flex;flex-direction:column; gap:4px;">
+    <div class="audio-info">ivoxxxygen — Young Kid (Remix)</div>
+    <div class="progress"><div id="audioProgress"></div></div>
+  </div>
+</div>
+<iframe id="scPlayer" width="100%" height="0" scrolling="no" frameborder="no" allow="autoplay"
+  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ivoxxxygen/young-kid-flexxone-beats-remix&auto_play=false&visual=false">
+</iframe>
+
+<div class="signature"><span>От подававана — молодожёнам<span> ✨</div>
+
+<script src="https://w.soundcloud.com/player/api.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
