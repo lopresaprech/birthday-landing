@@ -19,11 +19,11 @@ header {
 }
 .neon {
   color: #fff;
-  text-shadow: 0 0 5px #ff69b4, 0 0 15px #ff69b4, 0 0 30px #ff69b4;
+  text-shadow: 0 0 10px #ff4fa3, 0 0 25px #ff69b4, 0 0 40px #ff1493;
 }
 .subtitle {
   margin-top: 10px;
-  color: #faa;
+  color: #ff99cc;
 }
 .wrap {
   max-width: 900px;
@@ -31,28 +31,31 @@ header {
   padding: 20px;
 }
 .wishes {
-  border: 2px solid #ff69b4;
+  border: 2px solid #ff4fa3;
   border-radius: 15px;
   padding: 25px;
   margin: 30px auto;
   max-width: 800px;
   background: rgba(0, 0, 0, 0.55);
-  color: #fff;
   text-align: center;
-  line-height: 1.6;
-  box-shadow: 0 0 15px #ff69b4, 0 0 25px #ff69b4;
+  box-shadow: 0 0 25px #ff4fa3, 0 0 50px #ff69b4;
   animation: pulse-glow 3s infinite ease-in-out;
 }
 @keyframes pulse-glow {
-  0%   { box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; }
-  50%  { box-shadow: 0 0 30px #ff69b4, 0 0 60px #ff69b4; }
-  100% { box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; }
+  0%   { box-shadow: 0 0 15px #ff4fa3, 0 0 30px #ff69b4; }
+  50%  { box-shadow: 0 0 35px #ff69b4, 0 0 60px #ff1493; }
+  100% { box-shadow: 0 0 15px #ff4fa3, 0 0 30px #ff69b4; }
 }
 .from-padawan {
   margin-top: 20px;
   font-style: italic;
-  color: #ff69b4;
-  text-shadow: 0 0 5px #ff69b4, 0 0 15px #ff1493;
+  color: #ff99cc;
+  text-shadow: 0 0 10px #ff66b2, 0 0 25px #ff1493;
+  animation: neon-glow 2s infinite alternate;
+}
+@keyframes neon-glow {
+  from { text-shadow: 0 0 10px #ff66b2, 0 0 25px #ff1493; }
+  to   { text-shadow: 0 0 20px #ff99cc, 0 0 40px #ff4fa3; }
 }
 .controls {
   margin-top: 20px;
@@ -71,38 +74,26 @@ header {
   transition: 0.3s;
 }
 .btn:hover { background: #444; }
-.btn.primary { background: #ff69b4; color: #000; }
+.btn.primary {
+  background: #ff4fa3;
+  color: #fff;
+  box-shadow: 0 0 10px #ff4fa3, 0 0 25px #ff69b4;
+}
+.btn.primary:hover {
+  background: #ff66b2;
+}
 .gallery {
   margin: 20px auto;
-  max-width: 400px;
+  max-width: 300px; /* уменьшил размер фото */
   text-align: center;
 }
 .photo img {
-  width: 250px; /* уменьшил размер */
-  max-width: 90%;
+  width: 100%;
   border-radius: 12px;
-  border: 3px solid #ff69b4; /* розовая рамка */
-  box-shadow: 0 0 25px rgba(255,105,180,0.7); /* мягкое розовое свечение */
+  border: 3px solid #ff4fa3; /* розовая рамка */
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
 }
-.photo img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(255,105,180,1);
-}
-
-.from-padawan {
-  margin-top: 20px;
-  font-style: italic;
-  color: #ff69b4;
-  text-shadow: 0 0 8px #ff69b4, 0 0 20px #ff1493;
-  font-size: 1.1rem; /* чуть больше текста */
-  line-height: 1.5;
-  background: rgba(255,105,180,0.1); /* лёгкий розовый фон */
-  padding: 12px;
-  border-radius: 12px;
-}
-
 .modal {
   display: none;
   position: fixed;
@@ -177,5 +168,6 @@ header {
 @media (max-width:640px) {
   .btn { flex:1 1 100%; }
   .progress { width:120px; }
+  .gallery { max-width: 220px; } /* ещё меньше фото на телефоне */
 }
 
