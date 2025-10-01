@@ -82,8 +82,33 @@ heartsBtn.addEventListener("click", () => {
 
 // === Салют ===
 const launchBtn = document.getElementById("launchFireBtn");
+const fireworksCanvas = document.getElementById("fireworks-container");
+
+// подключаем fireworks.js
+const fireworks = new Fireworks.default(fireworksCanvas, {
+  autoresize: true,
+  opacity: 0.5,
+  acceleration: 1.05,
+  friction: 0.97,
+  gravity: 1.5,
+  particles: 120,
+  trace: 3,
+  explosion: 6,
+  intensity: 20,
+  flickering: 50,
+  lineStyle: 'round',
+  hue: { min: 0, max: 360 },
+  delay: { min: 15, max: 30 },
+  rocketsPoint: { min: 50, max: 50 },
+  lineWidth: { explosion: { min: 1, max: 3 }, trace: { min: 1, max: 2 } },
+  brightness: { min: 50, max: 80 },
+  decay: { min: 0.015, max: 0.03 },
+  mouse: { click: false, move: false, max: 1 }
+});
+
 launchBtn.addEventListener("click", () => {
-  alert("💥 Салют запускается! (можно подключить fireworks.js для эффекта)");
+  fireworks.start();
+  setTimeout(() => fireworks.stop(), 10000); // остановка через 10 секунд
 });
 
 // === Аудио управление ===
@@ -110,5 +135,4 @@ widget.bind(SC.Widget.Events.PLAY_PROGRESS, e => {
   let percent = (e.currentPosition / e.duration) * 100;
   audioProgress.style.width = percent + "%";
 });
-
 
