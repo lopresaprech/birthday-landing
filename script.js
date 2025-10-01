@@ -81,8 +81,6 @@ heartsBtn.addEventListener("click", () => {
 });
 
 // === Салют ===
-// ⚡ нужно подключить в index.html:
-// <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/fireworks.umd.js"></script>
 const launchBtn = document.getElementById("launchFireBtn");
 const fireCanvas = document.getElementById("miniCanvas");
 const fireworks = new Fireworks(fireCanvas, {
@@ -109,15 +107,17 @@ const fireworks = new Fireworks(fireCanvas, {
 
 launchBtn.addEventListener("click", () => {
   fireworks.start();
-  setTimeout(() => fireworks.stop(), 5000); // 5 секунд салюта
+  setTimeout(() => fireworks.stop(), 5000); // 5 секунд
 });
 
 // === Аудио управление ===
 window.addEventListener("load", () => {
+  const iframe = document.getElementById("scPlayer");
+  if (!iframe) return;
+
+  const widget = SC.Widget(iframe);
   const audioToggle = document.getElementById("audioToggle");
   const audioProgress = document.getElementById("audioProgress");
-  const iframe = document.getElementById("scPlayer");
-  const widget = SC.Widget(iframe);
 
   let playing = false;
 
