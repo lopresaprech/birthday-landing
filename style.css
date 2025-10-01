@@ -185,8 +185,22 @@ header {
   }
 
   .gallery {
-    order: -1;
+    order: -1; 
+  }
+
+  .neon {
+    font-size: 1.8rem;
+  }
+
+  .audio-bar {
+    width: 90%;
+    left: 5%;
+    transform: none;
+    justify-content: space-between;
+  }
+
+  .progress {
+    width: 120px;
   }
 }
-
 
