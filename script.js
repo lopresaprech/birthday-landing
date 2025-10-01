@@ -81,33 +81,25 @@ heartsBtn.addEventListener("click", () => {
 });
 
 // === Салют ===
-const fireCanvas = document.createElement('canvas');
-fireCanvas.id = "fireworksCanvas";
-fireCanvas.style.position = "fixed";
-fireCanvas.style.top = "0";
-fireCanvas.style.left = "0";
-fireCanvas.style.width = "100%";
-fireCanvas.style.height = "100%";
-fireCanvas.style.pointerEvents = "none";
-fireCanvas.style.zIndex = "999"; 
-document.body.appendChild(fireCanvas);
-
+// ⚡ нужно подключить в index.html:
+// <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/fireworks.umd.js"></script>
 const launchBtn = document.getElementById("launchFireBtn");
-
-const fireworks = new Fireworks.default(fireCanvas, {
+const fireCanvas = document.getElementById("miniCanvas");
+const fireworks = new Fireworks(fireCanvas, {
   autoresize: true,
   opacity: 0.5,
   acceleration: 1.05,
   friction: 0.97,
   gravity: 1.5,
-  particles: 120,
-  trace: 3,
-  explosion: 6,
-  intensity: 20,
+  particles: 50,
+  traceLength: 3,
+  traceSpeed: 10,
+  explosion: 5,
+  intensity: 30,
   flickering: 50,
-  lineStyle: 'round',
+  lineStyle: "round",
   hue: { min: 0, max: 360 },
-  delay: { min: 15, max: 30 },
+  delay: { min: 30, max: 60 },
   rocketsPoint: { min: 50, max: 50 },
   lineWidth: { explosion: { min: 1, max: 3 }, trace: { min: 1, max: 2 } },
   brightness: { min: 50, max: 80 },
@@ -117,30 +109,35 @@ const fireworks = new Fireworks.default(fireCanvas, {
 
 launchBtn.addEventListener("click", () => {
   fireworks.start();
-  setTimeout(() => fireworks.stop(), 10000); // 10 секунд салюта
+  setTimeout(() => fireworks.stop(), 5000); // 5 секунд салюта
 });
 
 // === Аудио управление ===
-const audioToggle = document.getElementById("audioToggle");
-const audioProgress = document.getElementById("audioProgress");
-const iframe = document.getElementById("scPlayer");
-const widget = SC.Widget(iframe);
+window.addEventListener("load", () => {
+  const audioToggle = document.getElementById("audioToggle");
+  const audioProgress = document.getElementById("audioProgress");
+  const iframe = document.getElementById("scPlayer");
+  const widget = SC.Widget(iframe);
 
-let playing = false;
+  let playing = false;
 
-audioToggle.addEventListener("click", () => {
-  if (!playing) {
-    widget.play();
-    audioToggle.textContent = "⏸";
-    playing = true;
-  } else {
-    widget.pause();
-    audioToggle.textContent = "▶";
-    playing = false;
-  }
+  audioToggle.addEventListener("click", () => {
+    if (!playing) {
+      widget.play();
+      audioToggle.textContent = "⏸";
+      playing = true;
+    } else {
+      widget.pause();
+      audioToggle.textContent = "▶";
+      playing = false;
+    }
+  });
+
+  widget.bind(SC.Widget.Events.PLAY_PROGRESS, e => {
+    if (e.duration) {
+      let percent = (e.currentPosition / e.duration) * 100;
+      audioProgress.style.width = percent + "%";
+    }
+  });
 });
 
-widget.bind(SC.Widget.Events.PLAY_PROGRESS, e => {
-  let percent = (e.currentPosition / e.duration) * 100;
-  audioProgress.style.width = percent + "%";
-});
