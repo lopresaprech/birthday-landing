@@ -80,35 +80,59 @@ heartsBtn.addEventListener("click", () => {
   }
 });
 
-// === Салют ===
+// === Салют (без fireworks.js) ===
 const launchBtn = document.getElementById("launchFireBtn");
 const fireCanvas = document.getElementById("miniCanvas");
-const fireworks = new Fireworks(fireCanvas, {
-  autoresize: true,
-  opacity: 0.5,
-  acceleration: 1.05,
-  friction: 0.97,
-  gravity: 1.5,
-  particles: 50,
-  traceLength: 3,
-  traceSpeed: 10,
-  explosion: 5,
-  intensity: 30,
-  flickering: 50,
-  lineStyle: "round",
-  hue: { min: 0, max: 360 },
-  delay: { min: 30, max: 60 },
-  rocketsPoint: { min: 50, max: 50 },
-  lineWidth: { explosion: { min: 1, max: 3 }, trace: { min: 1, max: 2 } },
-  brightness: { min: 50, max: 80 },
-  decay: { min: 0.015, max: 0.03 },
-  mouse: { click: false, move: false, max: 1 }
-});
+fireCanvas.width = window.innerWidth;
+fireCanvas.height = 300;
+const fCtx = fireCanvas.getContext("2d");
 
-launchBtn.addEventListener("click", () => {
-  fireworks.start();
-  setTimeout(() => fireworks.stop(), 5000); // 5 секунд
-});
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function drawParticle(p) {
+  fCtx.beginPath();
+  fCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+  fCtx.fillStyle = p.color;
+  fCtx.fill();
+}
+
+function launchFireworks() {
+  let particles = [];
+  let colors = ["red", "orange", "yellow", "white", "pink", "cyan"];
+  let interval = setInterval(() => {
+    fCtx.clearRect(0, 0, fireCanvas.width, fireCanvas.height);
+
+    if (particles.length < 100) {
+      for (let i = 0; i < 5; i++) {
+        particles.push({
+          x: fireCanvas.width/2,
+          y: fireCanvas.height,
+          r: random(2,5),
+          color: colors[Math.floor(random(0, colors.length))],
+          vx: random(-3,3),
+          vy: random(-8,-3),
+          life: 60
+        });
+      }
+    }
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.1;
+      p.life--;
+      drawParticle(p);
+    });
+
+    particles = particles.filter(p => p.life > 0);
+  }, 30);
+
+  setTimeout(() => clearInterval(interval), 5000);
+}
+
+launchBtn.addEventListener("click", launchFireworks);
 
 // === Аудио управление ===
 window.addEventListener("load", () => {
