@@ -81,7 +81,6 @@ heartsBtn.addEventListener("click", () => {
 });
 
 // === Салют ===
-// создаём canvas для салюта поверх всего
 const fireCanvas = document.createElement('canvas');
 fireCanvas.id = "fireworksCanvas";
 fireCanvas.style.position = "fixed";
@@ -95,9 +94,6 @@ document.body.appendChild(fireCanvas);
 
 const launchBtn = document.getElementById("launchFireBtn");
 
-// подключаем fireworks.js
-// (у тебя в index.html в <head> обязательно добавь эту строчку):
-// <script src="https://cdn.jsdelivr.net/npm/fireworks-js/dist/fireworks.js"></script>
 const fireworks = new Fireworks.default(fireCanvas, {
   autoresize: true,
   opacity: 0.5,
@@ -121,7 +117,7 @@ const fireworks = new Fireworks.default(fireCanvas, {
 
 launchBtn.addEventListener("click", () => {
   fireworks.start();
-  setTimeout(() => fireworks.stop(), 10000); // остановка через 10 секунд
+  setTimeout(() => fireworks.stop(), 10000); // 10 секунд салюта
 });
 
 // === Аудио управление ===
@@ -148,6 +144,3 @@ widget.bind(SC.Widget.Events.PLAY_PROGRESS, e => {
   let percent = (e.currentPosition / e.duration) * 100;
   audioProgress.style.width = percent + "%";
 });
-
-
-
