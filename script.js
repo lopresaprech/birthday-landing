@@ -80,59 +80,56 @@ heartsBtn.addEventListener("click", () => {
   }
 });
 
-// === Салют (без fireworks.js) ===
-const launchBtn = document.getElementById("launchFireBtn");
+// === Салют без внешних библиотек ===
 const fireCanvas = document.getElementById("miniCanvas");
+const fctx = fireCanvas.getContext("2d");
 fireCanvas.width = window.innerWidth;
-fireCanvas.height = 300;
-const fCtx = fireCanvas.getContext("2d");
+fireCanvas.height = window.innerHeight;
 
-function random(min, max) {
-  return Math.random() * (max - min) + min;
-}
+let particles = [];
 
-function drawParticle(p) {
-  fCtx.beginPath();
-  fCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-  fCtx.fillStyle = p.color;
-  fCtx.fill();
-}
-
-function launchFireworks() {
-  let particles = [];
-  let colors = ["red", "orange", "yellow", "white", "pink", "cyan"];
-  let interval = setInterval(() => {
-    fCtx.clearRect(0, 0, fireCanvas.width, fireCanvas.height);
-
-    if (particles.length < 100) {
-      for (let i = 0; i < 5; i++) {
-        particles.push({
-          x: fireCanvas.width/2,
-          y: fireCanvas.height,
-          r: random(2,5),
-          color: colors[Math.floor(random(0, colors.length))],
-          vx: random(-3,3),
-          vy: random(-8,-3),
-          life: 60
-        });
-      }
-    }
-
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vy += 0.1;
-      p.life--;
-      drawParticle(p);
+function createFirework(x, y) {
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: x,
+      y: y,
+      vx: (Math.random() - 0.5) * 8,
+      vy: (Math.random() - 0.5) * 8,
+      alpha: 1,
+      color: `hsl(${Math.random()*360}, 100%, 60%)`
     });
-
-    particles = particles.filter(p => p.life > 0);
-  }, 30);
-
-  setTimeout(() => clearInterval(interval), 5000);
+  }
 }
 
-launchBtn.addEventListener("click", launchFireworks);
+function drawFireworks() {
+  fctx.fillStyle = "rgba(0,0,0,0.2)";
+  fctx.fillRect(0, 0, fireCanvas.width, fireCanvas.height);
+
+  particles.forEach((p, i) => {
+    fctx.fillStyle = p.color;
+    fctx.globalAlpha = p.alpha;
+    fctx.beginPath();
+    fctx.arc(p.x, p.y, 3, 0, Math.PI*2);
+    fctx.fill();
+
+    p.x += p.vx;
+    p.y += p.vy;
+    p.alpha -= 0.02;
+
+    if (p.alpha <= 0) particles.splice(i, 1);
+  });
+
+  fctx.globalAlpha = 1;
+  requestAnimationFrame(drawFireworks);
+}
+
+drawFireworks();
+
+document.getElementById("launchFireBtn").addEventListener("click", () => {
+  const x = Math.random() * fireCanvas.width;
+  const y = Math.random() * fireCanvas.height / 2;
+  createFirework(x, y);
+});
 
 // === Аудио управление ===
 window.addEventListener("load", () => {
@@ -164,4 +161,5 @@ window.addEventListener("load", () => {
     }
   });
 });
+
 
