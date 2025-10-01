@@ -1,116 +1,114 @@
-// === ЗВЕЗДНОЕ НЕБО ===
-const starfield = document.getElementById("starfield");
-const starCtx = starfield.getContext("2d");
+// === Фон со звёздами ===
+const canvas = document.getElementById("starfield");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 let stars = [];
-function resizeStars() {
-  starfield.width = window.innerWidth;
-  starfield.height = window.innerHeight;
-  stars = Array.from({ length: 200 }, () => ({
-    x: Math.random() * starfield.width,
-    y: Math.random() * starfield.height,
-    r: Math.random() * 2,
-    d: Math.random() * 0.5
-  }));
+for (let i = 0; i < 200; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5,
+    d: Math.random() * 2
+  });
 }
-resizeStars();
-window.addEventListener("resize", resizeStars);
+
 function drawStars() {
-  starCtx.clearRect(0, 0, starfield.width, starfield.height);
-  starCtx.fillStyle = "white";
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "white";
+  ctx.beginPath();
   stars.forEach(s => {
-    starCtx.beginPath();
-    starCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    starCtx.fill();
-    s.y += s.d;
-    if (s.y > starfield.height) s.y = 0;
+    ctx.moveTo(s.x, s.y);
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2, true);
   });
-  requestAnimationFrame(drawStars);
+  ctx.fill();
+  moveStars();
 }
-drawStars();
 
-// === САЛЮТ ===
-const miniCanvas = document.getElementById("miniCanvas");
-const mCtx = miniCanvas.getContext("2d");
-miniCanvas.width = window.innerWidth;
-miniCanvas.height = window.innerHeight;
-let particles = [];
-function launchFirework() {
-  const x = Math.random() * miniCanvas.width;
-  const y = Math.random() * miniCanvas.height / 2;
-  for (let i = 0; i < 100; i++) {
-    particles.push({
-      x, y,
-      vx: (Math.random() - 0.5) * 5,
-      vy: (Math.random() - 0.5) * 5,
-      life: 100,
-      color: `hsl(${Math.random() * 360},100%,50%)`
-    });
-  }
-}
-function drawParticles() {
-  mCtx.clearRect(0, 0, miniCanvas.width, miniCanvas.height);
-  particles.forEach((p, i) => {
-    p.x += p.vx; p.y += p.vy; p.life--;
-    mCtx.fillStyle = p.color;
-    mCtx.fillRect(p.x, p.y, 2, 2);
-    if (p.life <= 0) particles.splice(i, 1);
+function moveStars() {
+  stars.forEach(s => {
+    s.y += 0.3;
+    if (s.y > canvas.height) {
+      s.y = 0;
+      s.x = Math.random() * canvas.width;
+    }
   });
-  requestAnimationFrame(drawParticles);
 }
-drawParticles();
 
-// === МОДАЛ ФОТО ===
+setInterval(drawStars, 40);
+
+// === Галерея (увеличение фото) ===
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modalImg");
-document.querySelectorAll(".photo img").forEach(ph => {
-  ph.addEventListener("click", () => {
-    modal.classList.add("active");
-    modalImg.src = ph.src;
+document.querySelectorAll(".photo img").forEach(img => {
+  img.addEventListener("click", () => {
+    modal.style.display = "flex";
+    modalImg.src = img.src;
   });
 });
-modal.addEventListener("click", () => modal.classList.remove("active"));
+modal.addEventListener("click", () => {
+  modal.style.display = "none";
+});
 
-// === HEARTS ===
-let heartsEnabled = false;
-function spawnHearts() {
-  if (!heartsEnabled) return;
-  const heart = document.createElement("div");
-  heart.textContent = "❤️";
-  heart.style.position = "fixed";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.top = "100vh";
-  heart.style.fontSize = "20px";
-  heart.style.transition = "all 4s linear";
-  document.body.appendChild(heart);
-  setTimeout(() => { heart.style.top = "-10vh"; heart.style.opacity = 0; }, 100);
-  setTimeout(() => heart.remove(), 4000);
-  setTimeout(spawnHearts, 500);
-}
+// === Сердечки ===
+const heartsBtn = document.getElementById("toggleHeartsBtn");
+let heartsActive = false;
+let heartsInterval;
 
-// === AUDIO BAR ===
-const scIframe = document.getElementById("scPlayer");
-const widget = SC.Widget(scIframe);
+heartsBtn.addEventListener("click", () => {
+  if (!heartsActive) {
+    heartsActive = true;
+    heartsInterval = setInterval(() => {
+      let heart = document.createElement("div");
+      heart.innerText = "❤️";
+      heart.style.position = "fixed";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.top = "-20px";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      heart.style.transition = "transform 4s linear, opacity 4s";
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.style.transform = `translateY(${window.innerHeight + 50}px)`;
+        heart.style.opacity = "0";
+      }, 100);
+      setTimeout(() => heart.remove(), 4000);
+    }, 400);
+  } else {
+    heartsActive = false;
+    clearInterval(heartsInterval);
+  }
+});
+
+// === Салют ===
+const launchBtn = document.getElementById("launchFireBtn");
+launchBtn.addEventListener("click", () => {
+  alert("💥 Салют запускается! (можно подключить fireworks.js для эффекта)");
+});
+
+// === Аудио управление ===
 const audioToggle = document.getElementById("audioToggle");
 const audioProgress = document.getElementById("audioProgress");
+const iframe = document.getElementById("scPlayer");
+const widget = SC.Widget(iframe);
+
 let playing = false;
-audioToggle.onclick = () => {
-  if (playing) { widget.pause(); audioToggle.textContent = "▶"; }
-  else { widget.play(); audioToggle.textContent = "⏸"; }
-  playing = !playing;
-};
-widget.bind(SC.Widget.Events.PLAY_PROGRESS, (e) => {
-  audioProgress.style.width = (e.relativePosition * 100) + "%";
+
+audioToggle.addEventListener("click", () => {
+  if (!playing) {
+    widget.play();
+    audioToggle.textContent = "⏸";
+    playing = true;
+  } else {
+    widget.pause();
+    audioToggle.textContent = "▶";
+    playing = false;
+  }
 });
 
-// === BUTTONS ===
-function addBtnHandler(id, handler) {
-  const btn = document.getElementById(id);
-  if (!btn) return;
-  ["click","touchstart"].forEach(ev => btn.addEventListener(ev, handler));
-}
-addBtnHandler("launchFireBtn", () => launchFirework());
-addBtnHandler("toggleHeartsBtn", () => {
-  heartsEnabled = !heartsEnabled;
-  if (heartsEnabled) spawnHearts();
+widget.bind(SC.Widget.Events.PLAY_PROGRESS, e => {
+  let percent = (e.currentPosition / e.duration) * 100;
+  audioProgress.style.width = percent + "%";
 });
+
 
