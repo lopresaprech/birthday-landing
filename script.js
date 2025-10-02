@@ -1,8 +1,13 @@
 // === Фон со звёздами ===
 const canvas = document.getElementById("starfield");
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 let stars = [];
 for (let i = 0; i < 200; i++) {
@@ -35,7 +40,6 @@ function moveStars() {
     }
   });
 }
-
 setInterval(drawStars, 40);
 
 // === Галерея (увеличение фото) ===
@@ -80,7 +84,7 @@ heartsBtn.addEventListener("click", () => {
   }
 });
 
-// === Салют без внешних библиотек ===
+// === Салют ===
 const fireCanvas = document.getElementById("miniCanvas");
 const fctx = fireCanvas.getContext("2d");
 fireCanvas.width = window.innerWidth;
@@ -122,7 +126,6 @@ function drawFireworks() {
   fctx.globalAlpha = 1;
   requestAnimationFrame(drawFireworks);
 }
-
 drawFireworks();
 
 document.getElementById("launchFireBtn").addEventListener("click", () => {
