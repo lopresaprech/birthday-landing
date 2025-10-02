@@ -11,7 +11,7 @@ html, body {
   box-sizing: border-box;
 }
 
-canvas#starfield {
+canvas#starfield, canvas#miniCanvas {
   position: fixed;
   top: 0; 
   left: 0;
