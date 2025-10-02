@@ -76,13 +76,18 @@ heartsBtn.addEventListener("click", () => {
 /* === Салют === */
 const fireCanvas = document.getElementById("miniCanvas");
 const fctx = fireCanvas.getContext("2d");
-fireCanvas.width = window.innerWidth;
-fireCanvas.height = window.innerHeight;
+
+function resizeCanvas() {
+  fireCanvas.width = window.innerWidth;
+  fireCanvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 let particles = [];
 
 function createFirework(x, y) {
-  for (let i = 0; i < 100; i++) { // больше частиц для эффекта
+  for (let i = 0; i < 100; i++) {
     const angle = Math.random() * 2 * Math.PI;
     const speed = Math.random() * 5 + 2;
     particles.push({
@@ -97,15 +102,14 @@ function createFirework(x, y) {
 }
 
 function drawFireworks() {
-  fctx.fillStyle = "rgba(0,0,0,0.2)";
-  fctx.fillRect(0, 0, fireCanvas.width, fireCanvas.height);
+  fctx.clearRect(0, 0, fireCanvas.width, fireCanvas.height);
 
   for (let i = particles.length - 1; i >= 0; i--) {
     const p = particles[i];
     fctx.globalAlpha = p.alpha;
     fctx.fillStyle = p.color;
     fctx.beginPath();
-    fctx.arc(p.x, p.y, 3, 0, Math.PI*2);
+    fctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
     fctx.fill();
 
     p.x += p.vx;
@@ -118,16 +122,14 @@ function drawFireworks() {
   fctx.globalAlpha = 1;
   requestAnimationFrame(drawFireworks);
 }
-
 drawFireworks();
 
-// Кнопка запуска салюта
+// Кнопка запуска
 document.getElementById("launchFireBtn").addEventListener("click", () => {
   const x = Math.random() * fireCanvas.width;
   const y = Math.random() * fireCanvas.height / 2;
   createFirework(x, y);
 });
-
 /* === Аудио SoundCloud === */
 window.addEventListener("load", () => {
   const iframe = document.getElementById("scPlayer");
@@ -166,6 +168,7 @@ window.addEventListener("resize", () => {
   fireCanvas.width = window.innerWidth;
   fireCanvas.height = window.innerHeight;
 });
+
 
 
 
