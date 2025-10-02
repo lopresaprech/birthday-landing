@@ -4,17 +4,19 @@ html, body {
   padding: 0;
   height: 100%;
   min-height: 100vh;
-  min-height: -webkit-fill-available; /* для iOS Safari */
   font-family: 'Segoe UI', sans-serif;
   color: #fff;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 canvas#starfield {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
   z-index: -1;
   display: block;
 }
@@ -46,7 +48,6 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  box-sizing: border-box;
 }
 
 /* === Пожелания === */
@@ -152,7 +153,8 @@ header {
   background: #ff3399;
   color: #fff;
   border-radius: 50%;
-  width: 40px; height: 40px;
+  width: 40px; 
+  height: 40px;
   cursor: pointer;
   font-size: 1.2rem;
 }
