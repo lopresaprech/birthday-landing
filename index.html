@@ -7,13 +7,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Фон -->
   <canvas id="starfield" aria-hidden="true"></canvas>
+  <canvas class="mini-canvas" id="miniCanvas"></canvas>
 
+  <!-- Заголовок -->
   <header>
     <h1><span class="neon">💖 Поздравляем с свадьбой! 💖</span></h1>
     <div class="subtitle">Пусть любовь сияет, как звёзды на небе ✨</div>
   </header>
 
+  <!-- Контент -->
   <div class="wrap">
     <div class="wishes" id="wishes">
       <h2>Счастья и любви вам обоим!</h2>
@@ -34,15 +38,17 @@
       </div>
     </div>
 
+    <!-- Галерея -->
     <div class="gallery">
       <div class="photo"><img src="photo.jpg" alt="photo"></div>
+      <!-- Можешь добавить ещё фото -->
     </div>
   </div>
 
+  <!-- Модальное окно для фото -->
   <div id="modal" class="modal"><img id="modalImg"></div>
 
-  <canvas class="mini-canvas" id="miniCanvas"></canvas>
-
+  <!-- Аудио-панель -->
   <div class="audio-bar" id="audioBar">
     <button class="audio-btn" id="audioToggle">▶</button>
     <div style="display:flex;flex-direction:column; gap:4px;">
@@ -51,10 +57,12 @@
     </div>
   </div>
 
+  <!-- SoundCloud -->
   <iframe id="scPlayer" width="100%" height="0" scrolling="no" frameborder="no" allow="autoplay"
     src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ivoxxxygen/young-kid-flexxone-beats-remix&auto_play=false&visual=false">
   </iframe>
 
+  <!-- Подпись -->
   <div class="signature">От падавана — молодожёнам ✨</div>
 
   <!-- Скрипты -->
@@ -62,8 +70,6 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
 
 
 
