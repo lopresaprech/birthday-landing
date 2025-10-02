@@ -1,6 +1,10 @@
 /* === Общий фон и звёзды === */
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* для iOS Safari */
   font-family: 'Segoe UI', sans-serif;
   color: #fff;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
@@ -12,6 +16,7 @@ canvas#starfield {
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: -1;
+  display: block;
 }
 
 /* === Заголовки === */
@@ -41,6 +46,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  box-sizing: border-box;
 }
 
 /* === Пожелания === */
@@ -128,16 +134,17 @@ header {
 /* === Аудиоплеер === */
 .audio-bar {
   position: fixed;
-  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  bottom: calc(20px + env(safe-area-inset-bottom));
   background: rgba(0,0,0,0.6);
   display: flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom)) 12px;
   border-radius: 12px;
   gap: 10px;
   box-shadow: 0 0 12px rgba(255, 50, 150, 0.4);
+  z-index: 50;
 }
 
 .audio-btn {
@@ -203,4 +210,3 @@ header {
     width: 120px;
   }
 }
-
