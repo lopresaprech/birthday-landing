@@ -16,7 +16,7 @@ canvas#miniCanvas {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -2;
+  z-index: -1;
   display: block;
   background: transparent;
 }
@@ -146,7 +146,7 @@ header {
   border-radius: 12px;
   gap: 10px;
   box-shadow: 0 0 12px rgba(255, 50, 150, 0.4);
-  z-index: 50;
+  z-index: 1000;
 }
 
 .audio-btn {
@@ -163,6 +163,7 @@ header {
 .audio-info {
   font-size: 0.9rem;
   opacity: 0.9;
+  white-space: nowrap;
 }
 
 .progress {
@@ -180,6 +181,7 @@ header {
   transition: width 0.2s;
 }
 
+/* === Подпись === */
 .signature {
   text-align: center;
   margin: 40px 0;
@@ -187,6 +189,7 @@ header {
   opacity: 0.7;
 }
 
+/* === Адаптив === */
 @media (max-width: 768px) {
   .wrap {
     flex-direction: column;
