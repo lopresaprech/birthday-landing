@@ -11,7 +11,8 @@ html, body {
   box-sizing: border-box;
 }
 
-canvas#starfield, canvas#miniCanvas {
+canvas#starfield,
+canvas#miniCanvas {
   position: fixed;
   top: 0; 
   left: 0;
@@ -19,6 +20,7 @@ canvas#starfield, canvas#miniCanvas {
   height: 100%;
   z-index: -1;
   display: block;
+  background: transparent;
 }
 
 /* === Заголовки === */
