@@ -82,12 +82,14 @@ fireCanvas.height = window.innerHeight;
 let particles = [];
 
 function createFirework(x, y) {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 100; i++) { // больше частиц для эффекта
+    const angle = Math.random() * 2 * Math.PI;
+    const speed = Math.random() * 5 + 2;
     particles.push({
       x: x,
       y: y,
-      vx: (Math.random() - 0.5) * 8,
-      vy: (Math.random() - 0.5) * 8,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
       alpha: 1,
       color: `hsl(${Math.random()*360}, 100%, 60%)`
     });
@@ -97,11 +99,13 @@ function createFirework(x, y) {
 function drawFireworks() {
   fctx.fillStyle = "rgba(0,0,0,0.2)";
   fctx.fillRect(0, 0, fireCanvas.width, fireCanvas.height);
-  particles.forEach((p, i) => {
-    fctx.fillStyle = p.color;
+
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
     fctx.globalAlpha = p.alpha;
+    fctx.fillStyle = p.color;
     fctx.beginPath();
-    fctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+    fctx.arc(p.x, p.y, 3, 0, Math.PI*2);
     fctx.fill();
 
     p.x += p.vx;
@@ -109,13 +113,15 @@ function drawFireworks() {
     p.alpha -= 0.02;
 
     if (p.alpha <= 0) particles.splice(i, 1);
-  });
+  }
+
   fctx.globalAlpha = 1;
   requestAnimationFrame(drawFireworks);
 }
 
 drawFireworks();
 
+// Кнопка запуска салюта
 document.getElementById("launchFireBtn").addEventListener("click", () => {
   const x = Math.random() * fireCanvas.width;
   const y = Math.random() * fireCanvas.height / 2;
@@ -160,6 +166,7 @@ window.addEventListener("resize", () => {
   fireCanvas.width = window.innerWidth;
   fireCanvas.height = window.innerHeight;
 });
+
 
 
 
