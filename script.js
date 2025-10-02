@@ -11,38 +11,24 @@ window.addEventListener("resize", resizeCanvas);
 
 let stars = [];
 for (let i = 0; i < 200; i++) {
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 1.5,
-    d: Math.random() * 2
-  });
+  stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.5 });
 }
 
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "white";
-  ctx.beginPath();
   stars.forEach(s => {
-    ctx.moveTo(s.x, s.y);
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2, true);
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fill();
+    s.y += 0.3;
+    if (s.y > canvas.height) { s.y = 0; s.x = Math.random() * canvas.width; }
   });
-  ctx.fill();
-  moveStars();
 }
 
-function moveStars() {
-  stars.forEach(s => {
-    s.y += 0.3;
-    if (s.y > canvas.height) {
-      s.y = 0;
-      s.x = Math.random() * canvas.width;
-    }
-  });
-}
 setInterval(drawStars, 40);
 
-// === Галерея (увеличение фото) ===
+// === Модалка для фото ===
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modalImg");
 document.querySelectorAll(".photo img").forEach(img => {
@@ -51,16 +37,11 @@ document.querySelectorAll(".photo img").forEach(img => {
     modalImg.src = img.src;
   });
 });
-modal.addEventListener("click", () => {
-  modal.style.display = "none";
-});
+modal.addEventListener("click", () => { modal.style.display = "none"; });
 
 // === Сердечки ===
-const heartsBtn = document.getElementById("toggleHeartsBtn");
-let heartsActive = false;
-let heartsInterval;
-
-heartsBtn.addEventListener("click", () => {
+let heartsActive = false, heartsInterval;
+document.getElementById("toggleHeartsBtn").addEventListener("click", () => {
   if (!heartsActive) {
     heartsActive = true;
     heartsInterval = setInterval(() => {
@@ -87,8 +68,13 @@ heartsBtn.addEventListener("click", () => {
 // === Салют ===
 const fireCanvas = document.getElementById("miniCanvas");
 const fctx = fireCanvas.getContext("2d");
-fireCanvas.width = window.innerWidth;
-fireCanvas.height = window.innerHeight;
+
+function resizeFireCanvas() {
+  fireCanvas.width = window.innerWidth;
+  fireCanvas.height = window.innerHeight;
+}
+resizeFireCanvas();
+window.addEventListener("resize", resizeFireCanvas);
 
 let particles = [];
 
@@ -97,23 +83,22 @@ function createFirework(x, y) {
     particles.push({
       x: x,
       y: y,
-      vx: (Math.random() - 3.5) * 8,
-      vy: (Math.random() - 3.5) * 8,
+      vx: (Math.random() - 0.5) * 8,
+      vy: (Math.random() - 0.5) * 8,
       alpha: 1,
-      color: `hsl(${Math.random()*360}, 100%, 60%)`
+      color: `hsl(${Math.random() * 360}, 100%, 60%)`
     });
   }
 }
 
 function drawFireworks() {
-  fctx.fillStyle = "rgba(0,0,0,0.2)";
-  fctx.fillRect(0, 0, fireCanvas.width, fireCanvas.height);
+  fctx.clearRect(0, 0, fireCanvas.width, fireCanvas.height);
 
   particles.forEach((p, i) => {
     fctx.fillStyle = p.color;
     fctx.globalAlpha = p.alpha;
     fctx.beginPath();
-    fctx.arc(p.x, p.y, 3, 0, Math.PI*2);
+    fctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
     fctx.fill();
 
     p.x += p.vx;
@@ -126,6 +111,7 @@ function drawFireworks() {
   fctx.globalAlpha = 1;
   requestAnimationFrame(drawFireworks);
 }
+
 drawFireworks();
 
 document.getElementById("launchFireBtn").addEventListener("click", () => {
@@ -136,10 +122,7 @@ document.getElementById("launchFireBtn").addEventListener("click", () => {
 
 // === Аудио управление ===
 window.addEventListener("load", () => {
-  const iframe = document.getElementById("scPlayer");
-  if (!iframe) return;
-
-  const widget = SC.Widget(iframe);
+  const widget = SC.Widget(document.getElementById("scPlayer"));
   const audioToggle = document.getElementById("audioToggle");
   const audioProgress = document.getElementById("audioProgress");
 
@@ -164,6 +147,3 @@ window.addEventListener("load", () => {
     }
   });
 });
-
-
-
