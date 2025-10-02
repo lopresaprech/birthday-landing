@@ -1,3 +1,49 @@
+// === Анимированные звезды ===
+const canvas = document.getElementById("starfield");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+let stars = [];
+const numStars = 300;
+
+// Создаем звёзды
+for (let i = 0; i < numStars; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5 + 0.5,
+    d: Math.random() * 0.5 + 0.05
+  });
+}
+
+// Рисуем и двигаем звезды
+function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "white";
+  ctx.beginPath();
+  stars.forEach(s => {
+    ctx.moveTo(s.x, s.y);
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    s.y += s.d;
+    if (s.y > canvas.height) {
+      s.y = 0;
+      s.x = Math.random() * canvas.width;
+    }
+  });
+  ctx.fill();
+
+  requestAnimationFrame(drawStars);
+}
+
+drawStars();
+
 // === Звёзды ===
 const canvas = document.getElementById("starfield");
 const ctx = canvas.getContext("2d");
@@ -89,5 +135,6 @@ window.addEventListener("load",()=>{
     if(e.duration){ audioProgress.style.width=(e.currentPosition/e.duration*100)+"%"; }
   });
 });
+
 
 
