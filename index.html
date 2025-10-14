@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>💖 Для Любимой 💖</title>
+  <title>💖 Для Самой Любимой 💖</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <canvas id="stars"></canvas>
+
   <div class="container">
-    <h1 class="title">💫 Для Самой Прекрасной 💫</h1>
+    <h1 class="title">💫 Для Самой Любимой 💫</h1>
 
     <div class="gallery">
       <div class="photo-frame">
@@ -27,20 +29,21 @@
         scrolling="no" 
         frameborder="no" 
         allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/archive-mada/samaya-speed-up&color=%23ff00ff&inverse=false&auto_play=false&show_user=true">
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/archive-mada/samaya-speed-up&color=%23ff00ff&auto_play=true">
       </iframe>
     </div>
 
-    <div class="message">
-      <p>💌 Ты сияешь ярче всех звезд на небе, моя любимая! Пусть каждый день приносит тебе радость и улыбки! 💌</p>
-    </div>
+    <p class="wish">
+      🌹 Ты моя радость, моя мечта, моя бесконечная улыбка! 🌹
+    </p>
 
     <div class="buttons">
-      <button class="confetti-btn" onclick="launchConfetti()">💖 Сердечки 💖</button>
+      <button class="heart-btn" onclick="launchHearts()">💖 Сердечки 💖</button>
     </div>
   </div>
 
-  <canvas id="confetti"></canvas>
-  <script src="script.js" defer></script>
+  <canvas id="hearts"></canvas>
+
+  <script src="script.js"></script>
 </body>
 </html>
