@@ -1,45 +1,70 @@
-/* === Мерцающие звезды === */
-const starsContainer = document.querySelector('.stars-background');
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
 
-for(let i=0;i<100;i++){
-  const star = document.createElement('div');
-  star.className='star';
-  star.style.left=Math.random()*window.innerWidth+'px';
-  star.style.top=Math.random()*window.innerHeight+'px';
-  star.style.width=Math.random()*2+1+'px';
-  star.style.height=star.style.width;
-  star.style.animationDuration=(Math.random()*3+2)+'s';
-  starsContainer.appendChild(star);
+let confetti = [];
+let hearts = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
+window.addEventListener("load", resizeCanvas);
+window.addEventListener("resize", resizeCanvas);
 
-/* === Сердечки как конфетти === */
-function launchHearts(){
-  for(let i=0;i<60;i++){
-    createHeart();
+// Звездный фон
+function launchStars(count = 150) {
+  for (let i = 0; i < count; i++) {
+    confetti.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      color: `hsl(${Math.random() * 360}, 80%, 70%)`,
+    });
+  }
+}
+launchStars();
+
+function launchHearts(count = 50) {
+  for (let i = 0; i < count; i++) {
+    hearts.push({
+      x: Math.random() * canvas.width,
+      y: canvas.height + Math.random() * 100,
+      size: Math.random() * 20 + 10,
+      speed: Math.random() * 3 + 2,
+      color: "#ff0080",
+      tilt: Math.random() * 0.5,
+    });
   }
 }
 
-function createHeart(){
-  const heart = document.createElement('div');
-  heart.innerHTML='❤️';
-  heart.style.position='fixed';
-  heart.style.left=Math.random()*window.innerWidth+'px';
-  heart.style.top='-50px';
-  heart.style.fontSize=(Math.random()*30+20)+'px';
-  heart.style.opacity=Math.random();
-  heart.style.transition='all 3s ease-out';
-  document.body.appendChild(heart);
-  setTimeout(()=>{
-    heart.style.top=window.innerHeight+50+'px';
-    heart.style.opacity=0;
-    heart.style.transform='rotate('+Math.random()*360+'deg)';
-  },50);
-  setTimeout(()=>heart.remove(),3000);
-}
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-/* === Автовоспроизведение плеера === */
-const iframe = document.querySelector('.soundcloud-player');
-iframe.onload = () => {
-  const msg = JSON.stringify({ method: 'play' });
-  iframe.contentWindow.postMessage(msg, '*');
-};
+  // Рисуем звездочки
+  confetti.forEach(c => {
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2, false);
+    ctx.fillStyle = c.color;
+    ctx.fill();
+  });
+
+  // Рисуем сердечки
+  hearts.forEach((h, i) => {
+    ctx.save();
+    ctx.translate(h.x, h.y);
+    ctx.rotate(Math.sin(h.tilt));
+    ctx.beginPath();
+    ctx.moveTo(0, -h.size / 2);
+    ctx.bezierCurveTo(h.size/2, -h.size, h.size, h.size/3, 0, h.size);
+    ctx.bezierCurveTo(-h.size, h.size/3, -h.size/2, -h.size, 0, -h.size/2);
+    ctx.fillStyle = h.color;
+    ctx.fill();
+    ctx.restore();
+
+    h.y -= h.speed;
+    if (h.y < -h.size) hearts.splice(i, 1);
+  });
+
+  requestAnimationFrame(draw);
+}
+draw();
