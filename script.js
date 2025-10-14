@@ -1,78 +1,84 @@
-// ----------------- ЗВЁЗДЫ -----------------
-const starsCanvas = document.getElementById("stars");
-const starsCtx = starsCanvas.getContext("2d");
+// Звездный фон
+const starsCanvas = document.getElementById('stars');
+const starsCtx = starsCanvas.getContext('2d');
 let stars = [];
 
-function resizeStars() {
+function resizeStarsCanvas() {
   starsCanvas.width = window.innerWidth;
   starsCanvas.height = window.innerHeight;
 }
-resizeStars();
-window.addEventListener("resize", resizeStars);
+resizeStarsCanvas();
+window.addEventListener('resize', resizeStarsCanvas);
 
 function createStars() {
   stars = [];
-  for (let i = 0; i < 150; i++) {
+  for(let i=0; i<200; i++){
     stars.push({
-      x: Math.random() * starsCanvas.width,
-      y: Math.random() * starsCanvas.height,
-      r: Math.random() * 2 + 1,
-      d: Math.random() * 0.05 + 0.01
+      x: Math.random()*window.innerWidth,
+      y: Math.random()*window.innerHeight,
+      r: Math.random()*2,
+      d: Math.random()*1
     });
   }
 }
 createStars();
 
 function drawStars() {
-  starsCtx.clearRect(0, 0, starsCanvas.width, starsCanvas.height);
+  starsCtx.clearRect(0,0,starsCanvas.width,starsCanvas.height);
   stars.forEach(s => {
     starsCtx.beginPath();
-    starsCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    starsCtx.fillStyle = "white";
+    starsCtx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    starsCtx.fillStyle = 'white';
     starsCtx.fill();
     s.y += s.d;
-    if (s.y > starsCanvas.height) s.y = 0;
+    if(s.y > starsCanvas.height) s.y = 0;
   });
   requestAnimationFrame(drawStars);
 }
 drawStars();
 
-// ----------------- СЕРДЕЧКИ -----------------
+// Сердечки
 const heartsCanvas = document.getElementById("hearts");
 const heartsCtx = heartsCanvas.getContext("2d");
 let hearts = [];
 
-function resizeHearts() {
+function resizeHeartsCanvas() {
   heartsCanvas.width = window.innerWidth;
   heartsCanvas.height = window.innerHeight;
 }
-resizeHearts();
-window.addEventListener("resize", resizeHearts);
+resizeHeartsCanvas();
+window.addEventListener("resize", resizeHeartsCanvas);
 
 function launchHearts() {
-  for (let i = 0; i < 50; i++) {
+  for(let i=0; i<50; i++){
     hearts.push({
-      x: Math.random() * heartsCanvas.width,
-      y: heartsCanvas.height + Math.random() * 50,
-      r: Math.random() * 10 + 5,
-      speed: Math.random() * 2 + 1,
-      color: `hsl(${Math.random()*360}, 100%, 70%)`
+      x: Math.random()*heartsCanvas.width,
+      y: Math.random()*heartsCanvas.height - heartsCanvas.height,
+      r: Math.random()*8+4,
+      d: Math.random()*2+1,
+      color: 'pink',
+      tilt: Math.random()*10-10
     });
   }
 }
 
 function drawHearts() {
-  heartsCtx.clearRect(0, 0, heartsCanvas.width, heartsCanvas.height);
-  hearts.forEach((h, index) => {
+  heartsCtx.clearRect(0,0,heartsCanvas.width,heartsCanvas.height);
+  hearts.forEach(h => {
     heartsCtx.beginPath();
     heartsCtx.moveTo(h.x, h.y);
-    heartsCtx.bezierCurveTo(h.x - h.r/2, h.y - h.r/2, h.x - h.r, h.y + h.r/3, h.x, h.y + h.r);
-    heartsCtx.bezierCurveTo(h.x + h.r, h.y + h.r/3, h.x + h.r/2, h.y - h.r/2, h.x, h.y);
+    heartsCtx.arc(h.x, h.y, h.r, 0, Math.PI*2);
     heartsCtx.fillStyle = h.color;
     heartsCtx.fill();
-    h.y -= h.speed;
-    if (h.y + h.r < 0) hearts.splice(index, 1);
+    h.y += h.d;
+    h.x += Math.sin(h.tilt/10);
+    if(h.y>heartsCanvas.height){
+      h.y = 0 - h.r;
+      h.x = Math.random()*heartsCanvas.width;
+    }
   });
   requestAnimationFrame(drawHearts);
 }
 drawHearts();
+
+
