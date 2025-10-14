@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>💖 Для Самой Любимой 💖</title>
+  <title>💖 Для Любимой 💖</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1 class="title">💫 Для Самой Красивой 💫</h1>
+    <h1 class="title">💫 Для Самой Прекрасной 💫</h1>
 
-    <!-- Галерея фоток -->
     <div class="gallery">
       <div class="photo-frame">
         <img src="photo1.jpg" alt="Фото 1" class="photo" />
@@ -20,7 +19,6 @@
       </div>
     </div>
 
-    <!-- Плеер -->
     <div class="player-frame">
       <iframe 
         class="soundcloud-player" 
@@ -33,19 +31,16 @@
       </iframe>
     </div>
 
-    <!-- Пожелание -->
-    <p class="wish">
-      🌸 Ты — моё солнце, моя радость и вдохновение. Пусть каждый день твоей жизни будет ярким и счастливым! 💖
-    </p>
+    <div class="message">
+      <p>💌 Ты сияешь ярче всех звезд на небе, моя любимая! Пусть каждый день приносит тебе радость и улыбки! 💌</p>
+    </div>
 
-    <!-- Кнопка сердечки -->
     <div class="buttons">
-      <button class="heart-btn" onclick="launchHearts()">💖 Сердечки</button>
+      <button class="confetti-btn" onclick="launchConfetti()">💖 Сердечки 💖</button>
     </div>
   </div>
 
-  <!-- Canvas для звезд и сердечек -->
   <canvas id="confetti"></canvas>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
