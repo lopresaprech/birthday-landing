@@ -4,37 +4,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
   color: #fff;
   overflow-x: hidden;
   min-height: 100vh;
-  background: black;
+  position: relative;
 }
 
-/* === Звездный фон === */
-.stars-background {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: twinkle 2s infinite;
-}
-
-@keyframes twinkle {
-  0%,100% {opacity:0.2;}
-  50% {opacity:1;}
-}
-
-/* === Контейнер === */
 .container {
   text-align: center;
   padding: 2rem;
@@ -42,14 +18,12 @@ body {
   z-index: 1;
 }
 
-/* === Заголовок === */
 .title {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   text-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
 }
 
-/* === Галерея === */
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -59,17 +33,18 @@ body {
 }
 
 .photo-frame {
-  border: 3px solid #ff00ff;
+  border: 3px solid #00ffff;
   border-radius: 15px;
-  box-shadow: 0 0 25px #ff00ff;
+  box-shadow: 0 0 25px #00ffff;
   overflow: hidden;
   transition: 0.3s ease;
+  width: 100%;
   max-width: 300px;
 }
 
 .photo-frame:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 35px #00ffff;
+  box-shadow: 0 0 35px #ff00ff;
 }
 
 .photo {
@@ -78,7 +53,6 @@ body {
   display: block;
 }
 
-/* === Плеер === */
 .player-frame {
   width: 90%;
   max-width: 500px;
@@ -87,8 +61,8 @@ body {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
-  background: rgba(0,0,0,0.4);
   transition: 0.4s;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .player-frame:hover {
@@ -101,40 +75,44 @@ body {
   opacity: 0.9;
 }
 
-/* === Пожелание === */
 .wish {
   font-size: 1.2rem;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5rem;
   text-shadow: 0 0 10px #ff00ff;
 }
 
-/* === Кнопка сердечки === */
 .buttons {
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
+  gap: 1rem;
 }
 
-.btn-heart {
-  font-size:1.2rem;
-  padding:1rem 2rem;
-  border:none;
-  border-radius:50px;
-  background:#111;
-  color:#ff3399;
-  cursor:pointer;
-  box-shadow:0 0 10px #ff3399, 0 0 20px #ff77ff, 0 0 30px #ff00ff;
-  transition:0.3s;
+.heart-btn {
+  background: #ff0080;
+  border: none;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff0080;
+  transition: 0.3s;
 }
 
-.btn-heart:hover {
-  transform:scale(1.1);
-  box-shadow:0 0 20px #ff3399, 0 0 40px #ff77ff, 0 0 60px #ff00ff;
+.heart-btn:hover {
+  box-shadow: 0 0 25px #ff66b2;
+  transform: scale(1.05);
 }
 
-/* === Адаптация под телефон === */
+/* Адаптация под телефон */
 @media (max-width: 600px) {
   .title { font-size: 1.8rem; }
-  .photo-frame { max-width: 90%; }
+  .photo-frame { max-width: 90%; margin: 0 auto; }
   .wish { font-size: 1rem; padding: 0 1rem; }
+  .player-frame { width: 95%; }
 }
