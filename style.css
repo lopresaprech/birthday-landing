@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+  background: radial-gradient(#0f2027, #203a43, #2c5364);
   color: #fff;
   overflow-x: hidden;
   min-height: 100vh;
@@ -14,8 +14,6 @@ body {
 .container {
   text-align: center;
   padding: 2rem;
-  position: relative;
-  z-index: 1;
 }
 
 .title {
@@ -24,6 +22,7 @@ body {
   text-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
 }
 
+/* Галерея фоток */
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -33,18 +32,17 @@ body {
 }
 
 .photo-frame {
-  border: 3px solid #00ffff;
+  border: 3px solid #ff00ff;
   border-radius: 15px;
-  box-shadow: 0 0 25px #00ffff;
+  box-shadow: 0 0 25px #ff00ff;
   overflow: hidden;
   transition: 0.3s ease;
-  width: 100%;
   max-width: 300px;
 }
 
 .photo-frame:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 35px #ff00ff;
+  box-shadow: 0 0 35px #00ffff;
 }
 
 .photo {
@@ -53,6 +51,7 @@ body {
   display: block;
 }
 
+/* Плеер */
 .player-frame {
   width: 90%;
   max-width: 500px;
@@ -75,44 +74,62 @@ body {
   opacity: 0.9;
 }
 
-.wish {
-  font-size: 1.2rem;
+/* Сообщение */
+.message {
   margin-top: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.5rem;
-  text-shadow: 0 0 10px #ff00ff;
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px #ff00ff, 0 0 15px #00ffff;
 }
 
+/* Кнопка */
 .buttons {
   margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
 }
 
-.heart-btn {
-  background: #ff0080;
+.confetti-btn {
+  background: #ff0099;
   border: none;
   color: white;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
   border-radius: 25px;
   cursor: pointer;
-  box-shadow: 0 0 15px #ff0080;
+  box-shadow: 0 0 15px #ff00ff, 0 0 25px #ff0099;
   transition: 0.3s;
 }
 
-.heart-btn:hover {
-  box-shadow: 0 0 25px #ff66b2;
+.confetti-btn:hover {
+  box-shadow: 0 0 35px #ff00ff, 0 0 50px #ff0099;
   transform: scale(1.05);
+}
+
+/* Canvas */
+#confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999;
 }
 
 /* Адаптация под телефон */
 @media (max-width: 600px) {
-  .title { font-size: 1.8rem; }
-  .photo-frame { max-width: 90%; margin: 0 auto; }
-  .wish { font-size: 1rem; padding: 0 1rem; }
-  .player-frame { width: 95%; }
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .photo-frame {
+    max-width: 90%;
+  }
+
+  .message {
+    font-size: 1rem;
+  }
+
+  .confetti-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
 }
+
+
