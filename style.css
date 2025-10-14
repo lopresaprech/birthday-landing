@@ -85,9 +85,10 @@ canvas#hearts {
 }
 
 .wish {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-top: 2rem;
-  text-shadow: 0 0 10px #ff00ff;
+  color: #ff69b4;
+  text-shadow: 0 0 10px #ff69b4;
 }
 
 .buttons {
@@ -95,20 +96,21 @@ canvas#hearts {
 }
 
 .hearts-btn {
-  background: #ff1493;
-  border: none;
-  color: white;
+  background: #111;
+  border: 2px solid #ff1493;
+  color: #ff69b4;
   padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   border-radius: 25px;
   cursor: pointer;
-  box-shadow: 0 0 15px #ff1493;
+  box-shadow: 0 0 20px #ff1493;
   transition: 0.3s;
 }
 
 .hearts-btn:hover {
-  box-shadow: 0 0 25px #ff69b4;
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0 0 35px #ff69b4;
+  background: #1a1a1a;
 }
 
 /* Мобильная адаптация */
@@ -119,4 +121,8 @@ canvas#hearts {
   .photo-frame {
     max-width: 90%;
   }
+  .wish {
+    font-size: 1.1rem;
+  }
 }
+
