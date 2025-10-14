@@ -3,18 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>💖 Для Любимой 💖</title>
+  <title>💖 Для Самой Любимой 💖</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Звездный фон -->
-  <div class="stars-background"></div>
-
   <div class="container">
     <h1 class="title">💫 Для Самой Красивой 💫</h1>
 
-    <!-- Галерея -->
+    <!-- Галерея фоток -->
     <div class="gallery">
       <div class="photo-frame">
         <img src="photo1.jpg" alt="Фото 1" class="photo" />
@@ -33,21 +29,23 @@
         scrolling="no" 
         frameborder="no" 
         allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/archive-mada/samaya-speed-up&color=%23ff00ff&auto_play=true&show_user=true">
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/archive-mada/samaya-speed-up&color=%23ff00ff&inverse=false&auto_play=false&show_user=true">
       </iframe>
     </div>
 
     <!-- Пожелание -->
     <p class="wish">
-      Моя любимая, пусть каждый день будет таким же ярким, как твоя улыбка. ❤️ Ты — мое вдохновение и счастье!
+      🌸 Ты — моё солнце, моя радость и вдохновение. Пусть каждый день твоей жизни будет ярким и счастливым! 💖
     </p>
 
     <!-- Кнопка сердечки -->
     <div class="buttons">
-      <button class="btn-heart" onclick="launchHearts()">💖 Сердечки 💖</button>
+      <button class="heart-btn" onclick="launchHearts()">💖 Сердечки</button>
     </div>
   </div>
 
+  <!-- Canvas для звезд и сердечек -->
+  <canvas id="confetti"></canvas>
   <script src="script.js"></script>
 </body>
 </html>
