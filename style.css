@@ -1,14 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
-* {
-  box-sizing: border-box;
+body {
   margin: 0;
   padding: 0;
-}
-
-body, html {
-  width: 100%;
-  height: 100%;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
   background: #000;
@@ -19,65 +13,70 @@ canvas#stars {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+canvas#hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
 }
 
 .container {
-  position: relative;
-  z-index: 1;
   text-align: center;
   padding: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .title {
   font-size: 2.5rem;
-  text-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
   margin-bottom: 1.5rem;
+  text-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
 }
 
 .gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-bottom: 2rem;
 }
 
 .photo-frame {
   border: 3px solid #ff00ff;
   border-radius: 15px;
+  box-shadow: 0 0 25px #ff00ff;
   overflow: hidden;
   max-width: 300px;
-  box-shadow: 0 0 25px #ff00ff;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: 0.3s ease;
 }
 
 .photo-frame:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 35px #ff00ff, 0 0 50px #00ffff;
+  box-shadow: 0 0 35px #00ffff;
 }
 
 .photo {
   width: 100%;
-  height: auto;
   display: block;
-  border-radius: 15px;
 }
 
 .player-frame {
   width: 90%;
   max-width: 500px;
   margin: 2rem auto;
+  border: 2px solid #ff00ff;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
   background: rgba(0,0,0,0.4);
-  transition: transform 0.4s, box-shadow 0.4s;
-}
-
-.player-frame:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 35px #ff00ff, 0 0 60px #00ffff;
 }
 
 .soundcloud-player {
@@ -86,59 +85,38 @@ canvas#stars {
 }
 
 .wish {
-  font-size: 1.5rem;
-  margin: 2rem 0;
-  color: #ff69b4;
-  text-shadow: 0 0 10px #ff69b4;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  text-shadow: 0 0 10px #ff00ff;
 }
 
 .buttons {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
-.heart-btn {
+.hearts-btn {
   background: #ff1493;
   border: none;
   color: white;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border-radius: 50px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
   cursor: pointer;
-  box-shadow: 0 0 20px #ff1493;
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 15px #ff1493;
+  transition: 0.3s;
 }
 
-.heart-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px #ff69b4;
+.hearts-btn:hover {
+  box-shadow: 0 0 25px #ff69b4;
+  transform: scale(1.05);
 }
 
-canvas#hearts {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Адаптация под телефон */
+/* Мобильная адаптация */
 @media (max-width: 600px) {
   .title {
     font-size: 1.8rem;
   }
-
   .photo-frame {
     max-width: 90%;
   }
-
-  .wish {
-    font-size: 1.2rem;
-  }
-
-  .heart-btn {
-    font-size: 1rem;
-    padding: 0.8rem 1.5rem;
-  }
 }
-
-
