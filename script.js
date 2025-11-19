@@ -1,4 +1,4 @@
-// Ждём, пока всё загрузится
+1// Ждём, пока всё загрузится
 window.addEventListener("load", function () {
   const iframe = document.getElementById("sc-player");
   const playBtn = document.getElementById("play-btn");
@@ -59,3 +59,4 @@ window.addEventListener("load", function () {
     progressInner.style.animationPlayState = "paused";
   });
 });
+
