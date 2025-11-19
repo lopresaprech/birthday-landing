@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Для Принцессы 💜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background-glow"></div>
+  <div class="hearts" aria-hidden="true">
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+  </div>
+
+  <main class="card">
+    <header class="card-header">
+      <div class="title-wrap">
+        <div class="title">
+          Для <span class="highlight">Настроение поднимется?</span>
+          <span class="sparkles">✨</span>
+        </div>
+        <p class="subtitle">
+          Страница, которая напоминает: ты самая красивая, самая желанная и вообще целая вселенная.
+        </p>
+      </div>
+
+      <div class="pill">
+        <span class="pill-dot"></span>
+        mood: 100% love
+      </div>
+    </header>
+
+    <section class="content-grid">
+      <div class="text-block">
+        <p class="note">
+          <span class="name">Вика,</span> если вдруг был тяжёлый день, усталость или какие-то глупые мысли —
+          эта страница здесь, чтобы тихо шепнуть: <b>с тобой всё в порядке, ты нереально классная</b> и
+          намного важнее, чем кажется.
+        </p>
+
+        <ul class="list">
+          <li>
+            <span class="list-bullet">★</span>
+            <span>Улыбка у тебя такая, что хочется ставить её на заставку всего мира.</span>
+          </li>
+          <li>
+            <span class="list-bullet">♡</span>
+            <span>Ты важна. Прям очень. Даже когда сама так не думаешь.</span>
+          </li>
+          <li>
+            <span class="list-bullet">✦</span>
+            <span>С тобой мир становится мягче, светлее и намного уютнее.</span>
+          </li>
+        </ul>
+
+        <p class="note">
+          Чуть ниже — твоя песня, немного магии и тепла. Можешь считать это маленьким порталом в
+          хорошее настроение. 💫
+        </p>
+      </div>
+
+      <!-- ВИДЕО вместо фоток -->
+      <div class="photos">
+        <div class="photo-wrapper">
+          <!-- Файл vika.mp4 должен лежать рядом с index.html -->
+          <video
+            class="photo"
+            src="vika.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+
+          <div class="photo-overlay"></div>
+          <div class="photo-tag">
+            <span class="photo-tag-dot"></span>
+            момент, где ты — самое лучшее, что с этим днём случилось
+          </div>
+        </div>
+      </div>
+      <!-- конец блока с видео -->
+    </section>
+
+    <section class="player-section">
+      <div class="player-info">
+        <div class="player-info-title">специальный трек для тебя</div>
+        <div class="song-title">
+          «Ты самая красивая, ты самая желанная» (slowed)
+        </div>
+        <p class="song-caption">
+          Нажми на кнопку и дай музыке напомнить: каждое слово в этой песне — это комплимент, который
+          очень подходит именно тебе.
+        </p>
+      </div>
+
+      <div>
+        <div class="player-card" id="custom-player">
+          <button class="player-button" id="play-btn" aria-label="Воспроизвести трек">
+            <span class="play-icon"></span>
+          </button>
+
+          <div class="player-meta">
+            <div class="player-line1">now playing for vika</div>
+            <div class="player-line2">мир немного замирает, когда ты улыбаешься</div>
+            <div class="player-line3">музыка включена — уровень милоты официально зашкалил</div>
+            <div class="progress-bar">
+              <div class="progress-inner"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-wrapper">
+          <!-- Официальный плеер SoundCloud -->
+          <iframe
+            id="sc-player"
+            allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-570011278/ty-samaya-krasivaya-ty-samaya-zhelannaya-slowed&color=%23ff66cc&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-note">
+      <div>Если вдруг станет чуть грустно — просто возвращайся сюда. Эта страница всегда на твоей стороне. 🫶</div>
+      <div class="badge">made специально для вики</div>
+    </footer>
+  </main>
+
+  <!-- API для управления SoundCloud-плеером -->
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <!-- Твой скрипт -->
+  <script src="script.js"></script>
+</body>
+</html>
