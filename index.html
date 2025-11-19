@@ -1,183 +1,147 @@
-<!doctype html>
-<html lang="uk">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Великий реферат: Інтонація й наголос</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Для Вики 💜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Intro overlay -->
-  <div id="introOverlay" aria-hidden="false">
-    <div id="introCard" role="dialog" aria-modal="true">
-      <h2>Великий реферат: Інтонація й наголос</h2>
-      <p>Тема: Інтонація та наголос в українській мові.<br>
-      Створено дизайнером <strong>FronZ1</strong> — автор ідей: <strong>Іван Металіді</strong>.</p>
-      <button class="btn-start" id="startBtn">Почати</button>
-    </div>
+  <div class="background-glow"></div>
+  <div class="hearts" aria-hidden="true">
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
   </div>
 
-  <div class="wrap" id="siteContent" aria-hidden="true">
-    <header>
-      <div class="logo">
-        <div class="logomark">UA</div>
-        <div>
-          <h1>Великий реферат: Інтонація й наголос</h1>
-          <p class="lead">Стильно. Неоново. Професійно — автор FronZ1.</p>
+  <main class="card">
+    <header class="card-header">
+      <div class="title-wrap">
+        <div class="title">
+          Для <span class="highlight">Вики</span>
+          <span class="sparkles">✨</span>
         </div>
+        <p class="subtitle">
+          Страница, которая напоминает: ты самая красивая, самая желанная и вообще целая вселенная.
+        </p>
       </div>
 
-      <nav>
-        <button class="nav-btn" data-to="introTab" id="tabIntroBtn">Вступ</button>
-        <button class="nav-btn" data-to="accentTab" id="tabAccentBtn">Наголос</button>
-        <button class="nav-btn" data-to="martynTab" id="tabMartynBtn">Мартин Боруля</button>
-        <button class="nav-btn" data-to="conclTab" id="tabConclBtn">Висновок</button>
-      </nav>
+      <div class="pill">
+        <span class="pill-dot"></span>
+        mood: 100% love
+      </div>
     </header>
 
-    <main class="main">
-      <!-- Tabs -->
-      <div class="card tabs" id="tabsContainer">
-        <div id="introTab" class="tab-panel">
-          <h2>Інтонаційні особливості українського мовлення</h2>
-          <p>Інтонація — музика мови: піднесення, спад, паузи та темп. Вона допомагає виражати емоції, позначати межі думок і змінювати значення речень.</p>
-          <div class="example" aria-hidden="false">
-            <strong>Анімований приклад — «Тон і пауза» (typewriter):</strong>
-            <div style="margin-top:10px">
-              <div class="typewriter" id="typeIntro">«Коли ти кажеш: "Я йду." — це одне. Коли ти кажеш: "Я йду?" — це інше.»</div>
-            </div>
-          </div>
-          <div class="fact"><strong>Цікавий факт:</strong> У деяких мовах інтонація змінює граматичне значення (наприклад, питання в китайській), але в українській інтонація головно додає емоційні та прагматичні відтінки.</div>
-        </div>
+    <section class="content-grid">
+      <div class="text-block">
+        <p class="note">
+          <span class="name">Вика,</span> если вдруг был тяжёлый день, усталость или какие-то глупые мысли —
+          эта страница здесь, чтобы тихо шепнуть: <b>с тобой всё в порядке, ты нереально классная</b> и
+          намного важнее, чем кажется.
+        </p>
 
-        <div id="accentTab" class="tab-panel">
-          <h2>Наголос</h2>
-          <p>Наголос виділяє склад у слові і може змінювати значення. Наприклад: <strong>замо́к</strong> (пристрій) vs <strong>за́мок</strong> (будівля).</p>
-          <div class="example">
-            <strong>Анімований приклад — зміна наголосу:</strong>
-            <div style="margin-top:12px;font-size:18px">
-              Слово: <span id="stressExample" class="stress-word">замок</span>
-              <div class="muted" style="margin-top:8px">Натисни на слово, щоб побачити акцент (анімована зміна).</div>
-            </div>
-          </div>
-          <div class="fact"><strong>Цікавий факт:</strong> Рухомий наголос у словах української мови іноді вказує на історичні зміни словоформ і може зберігати сліди праслов’янської фонетики.</div>
-        </div>
+        <ul class="list">
+          <li>
+            <span class="list-bullet">★</span>
+            <span>Улыбка у тебя такая, что хочется ставить её на заставку всего мира.</span>
+          </li>
+          <li>
+            <span class="list-bullet">♡</span>
+            <span>Ты важна. Прям очень. Даже когда сама так не думаешь.</span>
+          </li>
+          <li>
+            <span class="list-bullet">✦</span>
+            <span>С тобой мир становится мягче, светлее и намного уютнее.</span>
+          </li>
+        </ul>
 
-        <div id="martynTab" class="tab-panel">
-          <h2>Наголос у «Мартині Борулі»</h2>
-          <p>У п'єсі І. Карпенка-Карого наголос і інтонація підкреслюють становище персонажів, їх емоції та соціальні ролі.</p>
-          <div class="example">
-            <strong>Анімований приклад — цитата з ефектом акценту:</strong>
-            <div style="margin-top:12px">
-              <div id="quoteBox" class="quote">«— Хочу стати паном! — кричав він так, що всі звернули увагу.»</div>
-              <div class="muted" style="margin-top:8px">Натисни «Показати ефект», щоб побачити, як інтонація підсилює сцену.</div>
-              <div style="margin-top:8px">
-                <button class="nav-btn" id="animateQuoteBtn">Показати ефект</button>
-              </div>
-            </div>
-          </div>
-          <div class="fact"><strong>Цікавий факт:</strong> У драмі інтонація часто виконує роль «псевдо-маркеру» статусу: більш побожні або багаті персонажі можуть мати відмінні інтонаційні малюнки на сцені.</div>
-        </div>
-
-        <div id="conclTab" class="tab-panel">
-          <h2>Висновок</h2>
-          <p>Інтонація й наголос — ключові інструменти усного мовлення, що дозволяють багатогранно передавати смисл і ставлення мовця.</p>
-          <div class="example">
-            <strong>Анімований приклад — ключові пункти:</strong>
-            <div class="concl-list" id="conclList">
-              <div class="concl-item"><div class="check">✓</div><div>Інтонація формує емоційний контекст.</div></div>
-              <div class="concl-item"><div class="check">✓</div><div>Наголос може змінювати значення слова.</div></div>
-              <div class="concl-item"><div class="check">✓</div><div>У драмі інтонація підсилює сценічний образ.</div></div>
-            </div>
-            <div class="muted">Натисни «Показати висновки», щоб активувати анімацію.</div>
-            <div style="margin-top:10px"><button class="nav-btn" id="showConclBtn">Показати висновки</button></div>
-          </div>
-          <div class="fact"><strong>Цікавий факт:</strong> Дослідження показують, що інтонація допомагає слухачам розуміти емоційні стани навіть без повного знання мови.</div>
-        </div>
-      </div>
-    </main>
-
-    <aside class="sidebar">
-      <div class="player card" aria-label="Плеєр">
-        <div class="track">
-          <div class="cover">NB</div>
-          <div class="meta">
-            <div class="title">Небо</div>
-            <div class="artist">sadsvit</div>
-          </div>
-        </div>
-
-        <div class="controls">
-          <button id="playBtn" class="btn-play" aria-label="Play">▶</button>
-          <div class="progress" id="progress" title="Клік щоб перейти">
-            <i></i>
-          </div>
-          <div class="time" id="time">0:00</div>
-        </div>
-
-        <div class="spectrum" id="spectrum">
-          <div class="bar" style="height:8%"></div><div class="bar" style="height:12%"></div><div class="bar" style="height:10%"></div>
-          <div class="bar" style="height:14%"></div><div class="bar" style="height:6%"></div><div class="bar" style="height:9%"></div>
-          <div class="bar" style="height:7%"></div><div class="bar" style="height:11%"></div><div class="bar" style="height:5%"></div>
-          <div class="bar" style="height:8%"></div><div class="bar" style="height:10%"></div><div class="bar" style="height:6%"></div>
-          <div class="bar" style="height:9%"></div><div class="bar" style="height:7%"></div><div class="bar" style="height:13%"></div>
-          <div class="bar" style="height:9%"></div><div class="bar" style="height:8%"></div><div class="bar" style="height:11%"></div>
-          <div class="bar" style="height:6%"></div><div class="bar" style="height:8%"></div>
-        </div>
-
-        <div style="margin-top:12px;color:var(--muted);font-size:13px">
-          Плеєр намагається автозапуститися при завантаженні. Якщо автоплей заблоковано — натисни ▶.
-        </div>
-        <iframe id="sc-iframe" style="display:none" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/sadsvit/nebo&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false" frameborder="0"></iframe>
+        <p class="note">
+          Чуть ниже — твоя песня, немного магии и тепла. Можешь считать это маленьким порталом в
+          хорошее настроение. 💫
+        </p>
       </div>
 
-      <div class="creator card">
-        <div style="display:flex;justify-content:center">
-          <div class="fronz">FronZ1</div>
-        </div>
-        <div class="authors">
-          <p><strong>Дизайн та створення:</strong> <strong>FronZ1</strong> — цікавий чувак: часто спав і прогулював уроки, але зробив цю красу.</p>
-          <p><strong>Ідея та натхнення:</strong> <strong>Іван Металіді</strong> — автор початкової концепції.</p>
+      <!-- Блок с видео вместо фоток -->
+      <div class="photos">
+        <div class="photo-wrapper">
+          <video
+            class="photo"
+            src="blob:https://www.instagram.com/9c5c9fe1-f72d-4a6a-b3e7-d48147c9dc27"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+
+          <div class="photo-overlay"></div>
+          <div class="photo-tag">
+            <span class="photo-tag-dot"></span>
+            момент, где ты — самое лучшее, что с этим днём случилось
+          </div>
         </div>
       </div>
-    </aside>
+      <!-- конец блока с видео -->
+    </section>
 
-    <footer><strong>Зроблено ❤ - FronZ1 ^_^ </strong></footer>
-  </div>
+    <section class="player-section">
+      <div class="player-info">
+        <div class="player-info-title">специальный трек для тебя</div>
+        <div class="song-title">
+          «Ты самая красивая, ты самая желанная» (slowed)
+        </div>
+        <p class="song-caption">
+          Нажми на кнопку и дай музыке напомнить: каждое слово в этой песне — это комплимент, который
+          очень подходит именно тебе.
+        </p>
+      </div>
 
+      <div>
+        <div class="player-card" id="custom-player">
+          <button class="player-button" id="play-btn" aria-label="Воспроизвести трек">
+            <span class="play-icon"></span>
+          </button>
+
+          <div class="player-meta">
+            <div class="player-line1">now playing for vika</div>
+            <div class="player-line2">мир немного замирает, когда ты улыбаешься</div>
+            <div class="player-line3">музыка включена — уровень милоты официально зашкалил</div>
+            <div class="progress-bar">
+              <div class="progress-inner"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-wrapper">
+          <!-- Официальный плеер SoundCloud -->
+          <iframe
+            id="sc-player"
+            allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-570011278/ty-samaya-krasivaya-ty-samaya-zhelannaya-slowed&color=%23ff66cc&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-note">
+      <div>Если вдруг станет чуть грустно — просто возвращайся сюда. Эта страница всегда на твоей стороне. 🫶</div>
+      <div class="badge">made специально для вики</div>
+    </footer>
+  </main>
+
+  <!-- API для управления SoundCloud-плеером -->
   <script src="https://w.soundcloud.com/player/api.js"></script>
+  <!-- Твой скрипт -->
   <script src="script.js"></script>
-<style>
-  /* Принудительно убиваем всё, что мешает внизу */
-  body::after, body::before,
-  footer::before, footer::after,
-  main::before, main::after {
-    content: none !important;
-    display: none !important;
-    background: none !important;
-  }
-
-  footer, main, canvas {
-    background: transparent !important;
-    box-shadow: none !important;
-  }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    background: radial-gradient(circle at 30% 30%, #1b1133, #0a0614) !important;
-  }
-
-  /* На случай если что-то вылезает с абсолютным позиционированием */
-  div, section, canvas {
-    background-color: transparent !important;
-  }
-</style>
 </body>
 </html>
-
 
 
 
