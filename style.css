@@ -23,23 +23,24 @@ body {
 
 /* Заголовок */
 h1 {
-  font-size: 3em;
+  font-size: 2.6em;
   margin-bottom: 0.2em;
   color: #b47aff;
   text-shadow: 0 0 10px #8f4aff, 0 0 20px #8f4aff;
 }
 
+/* Текст */
 p, li {
-  font-size: 1.2em;
+  font-size: 1.15em;
   line-height: 1.5;
   color: #e9dbff;
   text-shadow: 0 0 6px #5b1df5;
 }
 
-/* Фото */
+/* Фото (уменьшенная) */
 .photo img {
-  width: 100%;
-  max-width: 500px;
+  width: 90%;
+  max-width: 340px;
   border-radius: 15px;
   margin-top: 15px;
   border: 2px solid #8c3cff;
@@ -51,7 +52,7 @@ iframe {
   margin-top: 25px;
   border: none;
   width: 100%;
-  height: 166px;
+  height: 160px;
   box-shadow: 0 0 20px #6c2aff;
   border-radius: 10px;
 }
@@ -86,3 +87,34 @@ iframe {
     transform: translateY(110vh) rotate(720deg);
   }
 }
+
+/* 📱 Адаптация под телефон */
+@media (max-width: 500px) {
+
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 2.1em;
+  }
+
+  p, li {
+    font-size: 1em;
+  }
+
+  .photo img {
+    width: 95%;
+    max-width: 280px;
+  }
+
+  iframe {
+    height: 150px;
+  }
+}
+
