@@ -1,0 +1,73 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#0d0017;
+  font-family: 'Arial', sans-serif;
+  color:#fff;
+  overflow:hidden;
+}
+.wrap {
+  position:relative;
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+.card {
+  background:#1a002b;
+  border:3px solid #7a00ff;
+  border-radius:20px;
+  padding:20px;
+  max-width:420px;
+  width:100%;
+  box-shadow:0 0 30px #7a00ff;
+}
+.avatar img{
+  width:100%; border-radius:15px;
+  box-shadow:0 0 25px #b300ff;
+}
+.nick { color:#c000ff; }
+.vertical-frame {
+  margin-top:20px;
+  border:2px solid #7700ff;
+  padding:15px;
+  border-radius:12px;
+  background:#12001f;
+}
+.tag { color:#ff73ff; font-size:14px; }
+.wishes p { margin:8px 0; }
+
+.player { margin-top:20px; }
+.player .meta { margin-bottom:10px; }
+.title { font-size:16px; margin-bottom:5px; }
+.controls { display:flex; align-items:center; gap:10px; }
+.btn{
+  width:30px; height:30px;
+  border-radius:50%; border:none;
+  background:#7a00ff;
+  cursor:pointer;
+  box-shadow:0 0 10px #7a00ff;
+}
+.progress{
+  flex:1;
+  height:6px;
+  background:#300045;
+  border-radius:4px;
+  position:relative;
+  cursor:pointer;
+}
+.bar{
+  height:6px;
+  width:0%;
+  background:#d400ff;
+  border-radius:4px;
+}
+#time { width:40px; text-align:right; font-size:13px; }
+#vol { width:100px; }
+
+canvas#confetti{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  z-index:-1;
+}
