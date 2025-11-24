@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  background: #061228;
+  color: #dcd0ff;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Контейнер */
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+  background: rgba(5, 10, 25, 0.7);
+  padding: 25px;
+  border-radius: 18px;
+  border: 2px solid #6c2aff;
+  box-shadow: 0 0 25px #6c2aff;
+  position: relative;
+  z-index: 10;
+}
+
+/* Заголовок */
+h1 {
+  font-size: 3em;
+  margin-bottom: 0.2em;
+  color: #b47aff;
+  text-shadow: 0 0 10px #8f4aff, 0 0 20px #8f4aff;
+}
+
+p, li {
+  font-size: 1.2em;
+  line-height: 1.5;
+  color: #e9dbff;
+  text-shadow: 0 0 6px #5b1df5;
+}
+
+/* Фото */
+.photo img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  margin-top: 15px;
+  border: 2px solid #8c3cff;
+  box-shadow: 0 0 30px #8c3cff;
+}
+
+/* Плеер */
+iframe {
+  margin-top: 25px;
+  border: none;
+  width: 100%;
+  height: 166px;
+  box-shadow: 0 0 20px #6c2aff;
+  border-radius: 10px;
+}
+
+/* Конфетти */
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 14px;
+  background: hsl(var(--hue), 100%, 70%);
+  opacity: 0.9;
+  animation: fall linear var(--duration) infinite;
+  transform: rotate(var(--rotation));
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
