@@ -9,7 +9,7 @@ const iframe = document.getElementById("scWidget");
 const widget = SC.Widget(iframe);
 
 let isPlaying = false;
-let durationMs = 0;
+let durationMs = null;
 
 // формат времени mm:ss
 function formatTime(ms) {
@@ -19,28 +19,35 @@ function formatTime(ms) {
     return `${min}:${sec.toString().padStart(2, "0")}`;
 }
 
+// начальное состояние времени
+timeLabel.textContent = "0:00 / —:—";
+
 // когда виджет готов
-widget.bind(SC.Widget.Events.READY, function () {
-    widget.getDuration(function (dur) {
-        durationMs = dur || 0;
-        timeLabel.textContent = `0:00 / ${durationMs ? formatTime(durationMs) : "0:00"}`;
+widget.bind(SC.Widget.Events.READY, () => {
+    widget.getDuration(dur => {
+        if (dur && dur > 0) {
+            durationMs = dur;
+            timeLabel.textContent = `0:00 / ${formatTime(durationMs)}`;
+        }
     });
 });
 
 // обновление прогресса
-widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
-    if (durationMs === 0 && e.duration) {
+widget.bind(SC.Widget.Events.PLAY_PROGRESS, e => {
+    if (!durationMs && e.duration) {
         durationMs = e.duration;
+        timeLabel.textContent = `0:00 / ${formatTime(durationMs)}`;
     }
 
-    const current = e.currentPosition || 0;
-    const rel = e.relativePosition || (durationMs ? current / durationMs : 0);
+    if (!durationMs) return;
 
-    progressEl.style.width = `${rel * 100}%`;
-    const left = formatTime(current);
-    const total = durationMs ? formatTime(durationMs) : "0:00";
-    timeLabel.textContent = `${left} / ${total}`;
+    const current = e.currentPosition;
+    const progress = current / durationMs;
+
+    progressEl.style.width = `${progress * 100}%`;
+    timeLabel.textContent = `${formatTime(current)} / ${formatTime(durationMs)}`;
 });
+
 
 // обработка Play / Pause
 playPauseBtn.addEventListener("click", () => {
@@ -65,3 +72,4 @@ widget.bind(SC.Widget.Events.FINISH, function () {
     progressEl.style.width = "0%";
     timeLabel.textContent = `0:00 / ${durationMs ? formatTime(durationMs) : "0:00"}`;
 });
+
