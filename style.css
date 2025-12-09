@@ -11,6 +11,7 @@ body {
         radial-gradient(circle at top left, #4a1f91, transparent 55%),
         radial-gradient(circle at bottom right, #1f164f, #050014);
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* ФОН */
@@ -22,7 +23,7 @@ body {
     height: 520px;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: .6;
+    opacity: .35;
     animation: float 20s infinite alternate;
     z-index: -1;
 }
@@ -47,14 +48,15 @@ body {
 
 /* ОСНОВА */
 .page {
-    max-width: 960px;
-    margin: auto;
-    padding: 24px;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
 }
 
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 12px;
     font-size: 12px;
     margin-bottom: 24px;
@@ -68,12 +70,17 @@ header {
 .badge {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.18);
+    background: radial-gradient(circle at top left, rgba(255,255,255,.14), rgba(5,0,20,.9));
+    font-size: 11px;
 }
 
 .badge-dot {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: #ff9bff;
     box-shadow: 0 0 12px #ff9bff;
@@ -81,13 +88,20 @@ header {
 
 /* КАРТОЧКА */
 .hero-card {
-    background: rgba(10, 6, 30, .95);
+    background: linear-gradient(
+        145deg,
+        rgba(30, 16, 70, 0.85),
+        rgba(8, 5, 25, 0.95)
+    );
     border-radius: 26px;
-    padding: 22px;
+    padding: 26px 26px 24px;
     display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: 20px;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 24px;
     border: 1px solid rgba(255,255,255,.12);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.8),
+        inset 0 0 40px rgba(199,125,255,.08);
 }
 
 .hero-card.playing {
@@ -95,29 +109,41 @@ header {
 }
 
 @keyframes pulse {
+    0%,100% {
+        box-shadow:
+            0 20px 60px rgba(0,0,0,.8),
+            inset 0 0 40px rgba(199,125,255,.08);
+    }
     50% {
-        box-shadow: 0 0 45px #c77dff;
+        box-shadow:
+            0 0 50px rgba(199,125,255,.9),
+            inset 0 0 50px rgba(199,125,255,.15);
     }
 }
 
-/* ТЕКСТ */
+/* ТЕКСТ СЛЕВА */
 .hero-kicker {
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: .2em;
+    letter-spacing: .22em;
     color: #ff9bff;
     margin-bottom: 6px;
 }
 
 .hero-title {
-    font-size: clamp(24px, 4vw, 32px);
+    font-size: clamp(26px, 4vw, 34px);
     margin-bottom: 10px;
 }
 
 .hero-sub {
     color: #c9c4ff;
     font-size: 14px;
+    line-height: 1.6;
     margin-bottom: 14px;
+}
+
+.hero-sub-extra {
+    margin-top: 12px;
 }
 
 .hero-tags {
@@ -131,16 +157,40 @@ header {
     padding: 5px 10px;
     border-radius: 999px;
     border: 1px solid rgba(255,255,255,.15);
-    color: #c9c4ff;
+    color: #e0ddff;
+    background: radial-gradient(circle at top left, rgba(255,255,255,.12), rgba(10,6,30,.85));
 }
 
-/* ФОТО */
+/* ПРАВАЯ ЧАСТЬ / ФОТО */
+.hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-block {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+}
+
+.photo-label {
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #f1e7ff;
+}
+
 .photo-frame {
     aspect-ratio: 3/4;
     border-radius: 24px;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,.2);
-    box-shadow: 0 0 30px rgba(199,125,255,.6);
+    border: 1px solid rgba(255,255,255,.3);
+    box-shadow:
+        0 0 32px rgba(199,125,255,.7),
+        0 0 80px rgba(5,0,20,.9);
+    background: radial-gradient(circle at top left, rgba(255,255,255,.1), rgba(5,0,20,1));
 }
 
 .photo-frame img {
@@ -151,77 +201,163 @@ header {
 
 .photo-caption {
     text-align: center;
-    font-size: 12px;
-    margin-top: 6px;
+    font-size: 11px;
+    margin-top: 8px;
     opacity: .8;
 }
 
 /* ПЛЕЕР */
+.player-shell {
+    margin-top: 18px;
+    padding: 12px 14px;
+    border-radius: 18px;
+    background: radial-gradient(circle at top left, rgba(255,255,255,.10), rgba(10,6,30,.85));
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 10px 30px rgba(0,0,0,.6);
+}
+
 .player {
-    margin-top: 16px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .player-btn {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: none;
-    background: #ff9bff;
+    background: radial-gradient(circle at top left, #ffe4ff, #ff9bff);
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #2b0035;
+    box-shadow: 0 0 26px rgba(255,155,255,.8);
+    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.player-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(255,155,255,1);
+    filter: brightness(1.05);
 }
 
 .player-main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.player-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.player-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.player-title {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.player-subtitle {
+    font-size: 11px;
+    opacity: .8;
+}
+
+.player-time {
+    font-size: 10px;
+    opacity: .85;
+    white-space: nowrap;
 }
 
 .player-bar {
-    height: 4px;
-    background: rgba(255,255,255,.15);
+    height: 5px;
+    background: rgba(255,255,255,.12);
     border-radius: 999px;
     overflow: hidden;
+    position: relative;
 }
 
 .player-progress {
     height: 100%;
     width: 0;
-    background: #ff9bff;
+    background: linear-gradient(90deg, #ff9bff, #6fbfff);
+    border-radius: inherit;
+    box-shadow: 0 0 14px rgba(255,155,255,.8);
+    transition: width .15s linear;
 }
 
-.player-time {
-    font-size: 10px;
-    opacity: .8;
+/* ТЕКСТ ПОД КАРТОЧКОЙ */
+.hero-text-extra {
+    margin-top: 26px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #e6e2ff;
+}
+
+.hero-text-extra p + p {
+    margin-top: 6px;
+}
+
+.hero-text-extra .underline {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #ff9bff;
 }
 
 /* МЕДАЛЬ */
 .medal-wrapper {
-    margin-top: 26px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
 .medal {
-    width: 70px;
-    height: 70px;
+    width: 78px;
+    height: 78px;
     border-radius: 50%;
-    background: radial-gradient(circle, #fff, #ff9bff);
+    background: radial-gradient(circle, #ffe6ff, #ff9bff);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
-    animation: medal 1.4s infinite;
+    font-size: 30px;
+
+    /* ФИОЛЕТОВАЯ ЗВЕЗДА */
+    color: #5a1a8b;
+    text-shadow:
+        0 0 6px rgba(90,26,139,.5),
+        0 0 12px rgba(255,155,255,.35);
+
+    animation: medal 1.3s infinite;
 }
 
+
 @keyframes medal {
+    0%,100% {
+        transform: scale(1);
+        box-shadow: 0 0 16px #ff9bff;
+    }
     50% {
-        transform: scale(1.1);
+        transform: scale(1.12);
         box-shadow: 0 0 40px #ff9bff;
     }
 }
 
 .medal-text {
-    margin-top: 6px;
+    margin-top: 8px;
     font-size: 13px;
 }
 
@@ -230,18 +366,54 @@ header {
     opacity: .8;
 }
 
+/* НИЖНЯЯ ПРИПИСКА */
+.bottom-note {
+    margin-top: 26px;
+    font-size: 11px;
+    text-align: center;
+    opacity: .65;
+}
+
+/* СКРЫТЫЙ IFRAME */
 iframe {
     display: none;
 }
 
-/* МОБИЛА */
+/* МОБИЛКА */
 @media (max-width: 768px) {
+    .page {
+        padding: 18px 16px 32px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
     .hero-card {
         grid-template-columns: 1fr;
+        padding: 20px 18px 18px;
+    }
+
+    .hero-right {
+        order: -1;
+    }
+
+    .photo-block {
+        margin-bottom: 6px;
+    }
+
+    .player-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .player-time {
+        font-size: 9px;
+        opacity: .85;
     }
 }
-.medal-wrapper {
-    margin-top: 26px;
-    text-align: center;
-}
+
+
 
