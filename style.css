@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Poppins, sans-serif;
+    color: #fff;
+    background:
+        radial-gradient(circle at top left, #4a1f91, transparent 55%),
+        radial-gradient(circle at bottom right, #1f164f, #050014);
+    min-height: 100vh;
+}
+
+/* ФОН */
+.bg-orbs::before,
+.bg-orbs::after {
+    content: "";
+    position: fixed;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .6;
+    animation: float 20s infinite alternate;
+    z-index: -1;
+}
+
+.bg-orbs::before {
+    background: #b768ff;
+    top: -130px;
+    left: -90px;
+}
+
+.bg-orbs::after {
+    background: #6fbfff;
+    bottom: -160px;
+    right: -80px;
+}
+
+@keyframes float {
+    to {
+        transform: translate(40px, -40px) scale(1.1);
+    }
+}
+
+/* ОСНОВА */
+.page {
+    max-width: 960px;
+    margin: auto;
+    padding: 24px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 12px;
+    margin-bottom: 24px;
+}
+
+.logo {
+    letter-spacing: 0.15em;
+    opacity: .9;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff9bff;
+    box-shadow: 0 0 12px #ff9bff;
+}
+
+/* КАРТОЧКА */
+.hero-card {
+    background: rgba(10, 6, 30, .95);
+    border-radius: 26px;
+    padding: 22px;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 20px;
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+.hero-card.playing {
+    animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse {
+    50% {
+        box-shadow: 0 0 45px #c77dff;
+    }
+}
+
+/* ТЕКСТ */
+.hero-kicker {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: #ff9bff;
+    margin-bottom: 6px;
+}
+
+.hero-title {
+    font-size: clamp(24px, 4vw, 32px);
+    margin-bottom: 10px;
+}
+
+.hero-sub {
+    color: #c9c4ff;
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+
+.hero-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.15);
+    color: #c9c4ff;
+}
+
+/* ФОТО */
+.photo-frame {
+    aspect-ratio: 3/4;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.2);
+    box-shadow: 0 0 30px rgba(199,125,255,.6);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-caption {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 6px;
+    opacity: .8;
+}
+
+/* ПЛЕЕР */
+.player {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #ff9bff;
+    cursor: pointer;
+}
+
+.player-main {
+    flex: 1;
+}
+
+.player-bar {
+    height: 4px;
+    background: rgba(255,255,255,.15);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.player-progress {
+    height: 100%;
+    width: 0;
+    background: #ff9bff;
+}
+
+.player-time {
+    font-size: 10px;
+    opacity: .8;
+}
+
+/* МЕДАЛЬ */
+.medal-wrapper {
+    margin-top: 26px;
+    text-align: center;
+}
+
+.medal {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff, #ff9bff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    animation: medal 1.4s infinite;
+}
+
+@keyframes medal {
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 40px #ff9bff;
+    }
+}
+
+.medal-text {
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+.medal-by {
+    font-size: 11px;
+    opacity: .8;
+}
+
+iframe {
+    display: none;
+}
+
+/* МОБИЛА */
+@media (max-width: 768px) {
+    .hero-card {
+        grid-template-columns: 1fr;
+    }
+}
