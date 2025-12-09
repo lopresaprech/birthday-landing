@@ -14,19 +14,20 @@
 
 <div class="page">
     <header>
-        <div class="logo">FOR MY FUTURE ENGLISH TEACHER</div>
+        <div class="logo">for u <<span>🩷</span></div>
         <div class="badge">
             <span class="badge-dot"></span>
-            <span>маленький неоновый уголок</span>
+            <span>маленький неоновый уголок, только для тебя</span>
         </div>
     </header>
 
     <main>
         <section class="hero">
 
+            <!-- НЕОНОВАЯ КАРТОЧКА -->
             <div class="hero-card" id="heroCard">
 
-                <!-- ЛЕВО -->
+                <!-- ЛЕВАЯ ЧАСТЬ -->
                 <div class="hero-left">
                     <div class="hero-kicker">dear future english teacher</div>
 
@@ -35,49 +36,83 @@
                     </h1>
 
                     <p class="hero-sub">
-                        ты много учишься и стараешься.<br>
-                        это просто маленькое <strong>я верю в тебя</strong>.
+                        ты много учишься, устаёшь, переживаешь.<br>
+                        хотелось подарить тебе свой маленькое неоновое
+                        <strong>«я верю в тебя».</strong>
                     </p>
 
                     <div class="hero-tags">
                         <span class="tag">умная</span>
                         <span class="tag">красивая</span>
+                        <span class="tag">умная в хорошем смысле</span>
                         <span class="tag">future teacher</span>
                     </div>
 
-                    <!-- ПЛЕЕР -->
-                    <div class="player">
-                        <button class="player-btn" id="playPauseBtn">▶</button>
+                    <p class="hero-sub hero-sub-extra">
+                        когда будет тяжёлый день, можно просто включить музыку, открыть эту
+                        страницу и на минуту вспомнить: <strong>за тебя уже болеют</strong>,
+                        причём очень честно.
+                    </p>
 
-                        <div class="player-main">
-                            <div class="player-title">rider</div>
+                    <!-- КАСТОМНЫЙ ПЛЕЕР -->
+                    <div class="player-shell">
+                        <div class="player">
+                            <button class="player-btn" id="playPauseBtn">▶</button>
 
-                            <div class="player-bar" id="progressBar">
-                                <div class="player-progress" id="progress"></div>
+                            <div class="player-main">
+                                <div class="player-header">
+                                    <div class="player-text">
+                                        <div class="player-title">rider</div>
+                                        <div class="player-subtitle">your little soundtrack for today</div>
+                                    </div>
+                                    <div class="player-time" id="timeLabel">0:00 / 0:00</div>
+                                </div>
+
+                                <div class="player-bar" id="progressBar">
+                                    <div class="player-progress" id="progress"></div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="player-time" id="timeLabel">0:00 / 0:00</div>
-
-                        <!-- СКРЫТЫЙ SOUNDCLOUD -->
-                        <iframe
-                            id="scWidget"
-                            allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/newlightchildraxatmusic/rider&visual=false">
-                        </iframe>
                     </div>
+
+                    <!-- СКРЫТЫЙ SOUNDCLOUD -->
+                    <iframe
+                        id="scWidget"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/newlightchildraxatmusic/rider&visual=false">
+                    </iframe>
                 </div>
 
-                <!-- ПРАВО -->
+                <!-- ПРАВАЯ ЧАСТЬ -->
                 <div class="hero-right">
-                    <div class="photo-frame">
-                        <img src="photo.jpg" alt="">
-                    </div>
-                    <div class="photo-caption">
-                        да, это ты ✨
+                    <div class="photo-block">
+                        <div class="photo-label">
+                            будущая учительница<br>английского
+                        </div>
+
+                        <div class="photo-frame">
+                            <!-- Положи в папку файл photo.jpg или измени src под своё имя -->
+                            <img src="photo.png" alt="future english teacher">
+                        </div>
+
+                        <div class="photo-caption">
+                            да, это ты. и да, ты реально выглядишь вот так красиво.
+                        </div>
                     </div>
                 </div>
 
+            </div>
+
+            <!-- ТЕКСТ ПОД КАРТОЧКОЙ -->
+            <div class="hero-text-extra">
+                <p>
+                    иногда слова в переписке не помещаются в один экран,
+                    поэтому я сделал <span class="underline">целую страницу</span>.
+                </p>
+                <p>
+                    пусть она напоминает тебе, насколько ты сильная,
+                    и как сильно я хочу, чтобы у тебя всё получилось.
+                </p>
             </div>
 
             <!-- МЕДАЛЬКА -->
@@ -86,6 +121,12 @@
                 <div class="medal-text">вот тебе медалька</div>
                 <div class="medal-by">ну вот, by FronZ1</div>
             </div>
+
+            <!-- САМАЯ МАЛЕНЬКАЯ ПРИПИСКА ВНИЗУ -->
+            <p class="bottom-note">
+                если вдруг станет тяжело — открой эту страницу, посмотри на себя со стороны
+                и вспомни, какая ты большая умница. ♡
+            </p>
 
         </section>
     </main>
