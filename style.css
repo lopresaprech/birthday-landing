@@ -240,3 +240,8 @@ iframe {
         grid-template-columns: 1fr;
     }
 }
+.medal-wrapper {
+    margin-top: 26px;
+    text-align: center;
+}
+
