@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>З Днем Народження ✨</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+
+<div class="container">
+
+  <div class="photo-frame">
+    <img src="photo.jpg" alt="Фото">
+  </div>
+
+  <div class="title">З Днем Народження</div>
+
+  <div class="text">
+    Бажаємо тобі безмежного щастя, гармонії та світла ✨<br><br>
+    Нехай поруч завжди будуть люблячий чоловік
+    та найкраща у світі донечка 💜<br><br>
+    Хай у вашій родині панує любов, тепло і підтримка,
+    а всі мрії легко стають реальністю 🌸
+  </div>
+
+  <div class="player">
+    <button id="playBtn" class="play-btn">PLAY</button>
+    <button id="confettiBtn" class="confetti-btn">CONFETTI 🎉</button>
+    <div class="note">Увімкни звук і додай святковий вайб</div>
+
+    <iframe id="scPlayer"
+      width="0"
+      height="0"
+      frameborder="no"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ivoxxxygen/fire-ego&auto_play=false">
+    </iframe>
+  </div>
+
+</div>
+
+<script src="https://w.soundcloud.com/player/api.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
