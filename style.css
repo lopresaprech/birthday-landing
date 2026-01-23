@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #080014;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #3b1d6a, #060010);
+  z-index: -2;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.neon {
+  font-size: 52px;
+  color: #c77dff;
+  text-shadow: 0 0 20px #9b5cff, 0 0 40px #6a00ff;
+}
+
+.card {
+  margin-top: 30px;
+  padding: 35px;
+  border-radius: 26px;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 35px rgba(155,92,255,0.3);
+}
+
+.text p {
+  font-size: 21px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.bold {
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.section-title {
+  margin: 70px 0 30px;
+  font-size: 32px;
+  color: #e3caff;
+}
+
+/* ВИДЕО */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.video-box {
+  position: relative;
+  width: 100%;
+  padding-top: 177%;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(155,92,255,0.35);
+}
+
+.video-box video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* МУЗЫКА */
+.music-player {
+  margin: 25px auto;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+  padding: 18px 28px;
+  border-radius: 40px;
+  width: fit-content;
+}
+
+.music-player button {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  font-size: 24px;
+  background: #9b5cff;
+  cursor: pointer;
+}
+
+#sc-player {
+  display: none;
+}
+
+.fx-btn {
+  margin-top: 40px;
+  padding: 14px 30px;
+  font-size: 18px;
+  border-radius: 30px;
+  background: transparent;
+  border: 2px solid #9b5cff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: 60px;
+  opacity: 0.6;
+}
+
+/* МАГИЯ ПОВЕРХ ВСЕГО */
+#fx {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .neon { font-size: 38px; }
+  .text p { font-size: 18px; }
+}

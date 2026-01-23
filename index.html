@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>С Днём Рождения 💜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="container">
+
+  <h1 class="neon">С Днём Рождения 💜</h1>
+
+  <div class="card text">
+    <p>
+      Ты — невероятная женщина.  
+      <b>29 декабря</b> твоя жизнь стала ещё светлее —
+      ты стала мамой 🤍
+    </p>
+    <p>
+      Пусть каждый день будет наполнен теплом,
+      спокойствием и любовью.
+    </p>
+    <p class="bold">
+      А если понадобится кум —  
+      я, если что, готов 😌
+    </p>
+  </div>
+
+  <h2 class="section-title">Видео 🎥</h2>
+
+  <div class="video-grid">
+    <div class="video-box">
+      <video src="video1.mp4" controls playsinline></video>
+    </div>
+    <div class="video-box">
+      <video src="video2.mp4" controls playsinline></video>
+    </div>
+    <div class="video-box">
+      <video src="video3.mp4" controls playsinline></video>
+    </div>
+  </div>
+
+  <h2 class="section-title">Музыка 🎶</h2>
+
+  <div class="music-player">
+    <button id="musicBtn">▶</button>
+    <span>About You</span>
+  </div>
+
+  <!-- скрытый soundcloud -->
+  <iframe
+    id="sc-player"
+    src="https://w.soundcloud.com/player/?url=https://soundcloud.com/newlightchildsss/about-you-5&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false"
+    allow="autoplay">
+  </iframe>
+
+  <button id="fxToggle" class="fx-btn">💜 Включить магию</button>
+
+  <div class="footer">С любовью ✨</div>
+
+</div>
+
+<!-- МАГИЯ ПОВЕРХ ВСЕГО -->
+<canvas id="fx"></canvas>
+
+<script src="https://w.soundcloud.com/player/api.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
