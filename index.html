@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>С Днём Рождения 💛</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+<canvas id="fireworks"></canvas>
+
+<div class="intro" id="intro">
+    <h1>🌌 Особенный день 🌌</h1>
+    <p>Сегодня звёзды сияют ярче, потому что родилась ты ✨</p>
+    <button onclick="startSite()">Открыть 🚀</button>
+</div>
+
+<div class="content" id="content">
+
+   <div class="player-wrapper">
+    <iframe id="sc-player"
+        width="100%"
+        height="166"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/stromae/alors-on-danse&color=%23ffcc00&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false">
+    </iframe>
+
+    <div class="custom-player-ui">
+        <div class="player-glow"></div>
+        <div class="player-info">
+            <h2>🎵 Stromae – Alors On Danse</h2>
+            <p>Feel the golden vibe</p>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Главная фотография -->
+    <div class="main-photo">
+        <img src="photo.jpg" alt="Крестная">
+        <div class="photo-text">Ты — наша главная звезда 💛</div>
+    </div>
+
+    <!-- Пожелания -->
+    <div class="wishes">
+        <div class="wish">✨ Пусть каждый день приносит радость</div>
+        <div class="wish">💛 Здоровья, любви и тепла</div>
+        <div class="wish">🌟 Чтобы мечты становились реальностью</div>
+    </div>
+
+    <!-- Видео горизонтально -->
+    <div class="videos-wrapper">
+        <div class="video-card">
+            <video src="video1.mp4"></video>
+            <button onclick="togglePlay(this)">▶</button>
+        </div>
+
+        <div class="video-card">
+            <video src="video2.mp4"></video>
+            <button onclick="togglePlay(this)">▶</button>
+        </div>
+
+        <div class="video-card">
+            <video src="video3.mp4"></video>
+            <button onclick="togglePlay(this)">▶</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
