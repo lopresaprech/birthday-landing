@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>С Днём Рождения, Бро</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="noise"></div>
+
+<canvas id="particles"></canvas>
+<canvas id="fireworks"></canvas>
+
+<div class="scroll-indicator" id="scrollIndicator"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>С ДНЁМ РОЖДЕНИЯ</h1>
+
+  <p class="hero-sub">
+    это твой день, бро
+  </p>
+
+  <button class="scroll-btn" onclick="scrollToContent()">
+    НАЧАТЬ
+  </button>
+</section>
+
+<!-- CONTENT -->
+<div class="section">
+
+  <div class="gallery">
+
+    <div class="photo-card">
+      <img src="photo1.jpg">
+    </div>
+
+    <div class="photo-card">
+      <img src="photo2.jpg">
+    </div>
+
+  </div>
+
+  <div class="text-block">
+    ты тот, кто всегда <span>рядом</span><br>
+    даже когда всё летит к хуям
+  </div>
+
+  <div class="gallery">
+
+    <div class="photo-card">
+      <img src="photo3.jpg">
+    </div>
+
+    <div class="photo-card">
+      <img src="photo4.jpg">
+    </div>
+
+  </div>
+
+  <div class="video-container">
+    <video
+      src="video.mp4"
+      autoplay
+      muted
+      loop
+      playsinline>
+    </video>
+  </div>
+
+  <div class="wishes">
+
+    <div class="wish-card">
+      <h3>🔥 Силы</h3>
+
+      <p>
+        Чтобы хватало энергии
+        на всё в этой жизни.
+      </p>
+    </div>
+
+    <div class="wish-card">
+      <h3>💰 Бабок</h3>
+
+      <p>
+        Чтобы возможности никогда
+        не упирались в деньги.
+      </p>
+    </div>
+
+    <div class="wish-card">
+      <h3>🧠 Ясности</h3>
+
+      <p>
+        Чтобы внутри был порядок,
+        а в голове — спокойствие.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="text-block">
+    ты мне как <span>брат</span><br>
+    и это не просто слова
+  </div>
+
+</div>
+
+<!-- FINAL -->
+<div class="final">
+
+  <h2>
+    ЭТОТ ГОД — ТВОЙ 🚀
+  </h2>
+
+  <p>
+    бери от него всё.
+    ты заслужил.
+  </p>
+
+</div>
+
+<!-- PLAYER -->
+<div class="player">
+
+  <button
+    class="player-btn"
+    id="playBtn"
+    onclick="toggleMusic()">
+
+    ▶
+
+  </button>
+
+  <div class="player-info">
+    ivoxygen — home
+  </div>
+
+</div>
+
+<script src="https://w.soundcloud.com/player/api.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
