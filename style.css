@@ -353,10 +353,15 @@ box-shadow:
 0 0 40px #ff00ff;
 }
 
-.card-image{
-  width:100%;
-  height:220px;
+.card{
+  width:300px;
+  border-radius:25px;
   overflow:hidden;
+  background:#2b0144;
+}
+
+.card-image{
+  height:220px;
 }
 
 .card-image img{
