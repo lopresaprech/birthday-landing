@@ -354,8 +354,8 @@ box-shadow:
 }
 
 .card{
-  width:300px;
-  border-radius:25px;
+  width:302px;
+  border-radius:30px;
   overflow:hidden;
   background:#2b0144;
 }
