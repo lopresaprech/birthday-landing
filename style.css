@@ -732,10 +732,11 @@ padding:30px;
 font-size:18px;
 }
 .card{
-  width:100%;
+  width:300px; /* или сколько тебе надо */
   height:220px;
   overflow:hidden;
   border-radius:25px;
+  position:relative;
 }
 
 .card img{
@@ -743,12 +744,4 @@ font-size:18px;
   height:100%;
   object-fit:cover;
   display:block;
-}
-
-@media(max-width:700px){
-
-  .card{
-    height:160px;
-  }
-
 }
