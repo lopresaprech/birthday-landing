@@ -25,12 +25,17 @@ particles.appendChild(span);
 
 function scrollToCasino(){
 
-document
-.getElementById('casino')
-.scrollIntoView({
+const casino =
+document.querySelector('#casino');
 
-behavior:'smooth'
+if(casino){
+
+casino.scrollIntoView({
+behavior:'smooth',
+block:'start'
 });
+
+}
 }
 /* SLOT */
 
