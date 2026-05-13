@@ -25,9 +25,13 @@ particles.appendChild(span);
 
 function scrollToCasino(){
 
-window.location.hash = 'casino';
-}
+document
+.getElementById('casino')
+.scrollIntoView({
 
+behavior:'smooth'
+});
+}
 /* SLOT */
 
 const symbols = [
