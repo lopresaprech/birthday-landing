@@ -194,11 +194,6 @@ page.innerHTML = `
 `;
 }
 }
-
-/* =========================
-🎵 SOUNDCLOUD
-========================= */
-
 /* =========================
 🎵 SOUNDCLOUD
 ========================= */
@@ -315,4 +310,17 @@ widget.pause();
 
 widget.play();
 }
+});
+const casinoBtn =
+document.getElementById('casinoBtn');
+
+casinoBtn.addEventListener('click',()=>{
+
+document
+.getElementById('casino')
+.scrollIntoView({
+
+behavior:'smooth'
+});
+
 });
