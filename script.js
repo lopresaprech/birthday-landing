@@ -75,15 +75,15 @@ function answerVanya(choice) {
     box.classList.add('yes-result');
     box.innerHTML = `
       <div style="font-size:22px;margin-bottom:8px">💪 ВОТ ЭТО ВАНЯ!</div>
-      Мажор 2026 ждёт тебя. Засядем, сделаем всех — как NAVI в финале.<br>
+      Я Жду Тебя у себя в дсе чемпион.<br>
       <a class="dc-link" href="https://discord.gg/" target="_blank">🎮 Зайди в DC · DS: blyadtakay123</a>
     `;
   } else {
     box.classList.add('no-result');
     box.innerHTML = `
       <div style="font-size:20px;margin-bottom:8px">🤡 Значит, дела важнее?</div>
-      Ваня, ты уже <b>третий раз</b> кинул нас ради "другого дела"...<br>
-      Мы начали подозревать, что твоё "дело" — это Minecraft соло в 3 ночи.<br>
+      Ваня, ты уже <b>какой раз</b> кинул нас ради "другого дела"...<br>
+      Мы начали подозревать, что твоё "дело" — это пиво без нас и бабы .<br>
       <span style="font-size:13px;color:rgba(255,150,150,0.7);margin-top:8px;display:block">
         P.S. Монеси тоже так говорил — и потом весь вечер жалел 💀
       </span>
@@ -120,8 +120,8 @@ function answerIluha(choice) {
     box.classList.add('no-result');
     box.innerHTML = `
       <div style="font-size:20px;margin-bottom:8px">😐 Нет, значит нет...</div>
-      Окей, Илюха. Просто знай — Монеси тоже говорил "нет".<br>
-      Теперь у него <b>скин AWP Азимов</b> за 0 рублей и вечный позор 💀<br>
+      Окей, Илюха. Просто знай — Симпл тоже говорил "нет".<br>
+      Теперь он  <b>в Инактиве</b>  💀<br>
       <span style="font-size:13px;color:rgba(255,130,130,0.65);display:block;margin-top:8px">
         Ещё можешь передумать... кнопка "Да" всё ещё тебя любит 👆
       </span>
