@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>КС зовёт</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Фон: видео -->
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="1.mp4" type="video/mp4" />
+  </video>
+  <div class="overlay"></div>
+
+  <!-- ЭКРАН ВЫБОРА ИГРОКА -->
+  <div id="screen-choose" class="screen active">
+    <div class="choose-box">
+      <div class="magor-badge">МАЖОР 2026 🏆</div>
+      <h1>КС ЗОВЁТ</h1>
+      <p class="sub">Выбери кто ты</p>
+      <div class="choose-btns">
+        <button class="btn-player" onclick="goTo('vanya')">🎮 Ваня</button>
+        <button class="btn-player" onclick="goTo('iluha')">😈 Илюха</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЭКРАН ВАНИ -->
+  <div id="screen-vanya" class="screen">
+    <audio id="audio-vanya" loop>
+      <source src="https://soundcloud.com/newlightchildsss/sei-chas-1" type="audio/mpeg" />
+    </audio>
+    <div class="main-box">
+      <div class="magor-badge">МАЖОР 2026 🏆</div>
+      <h1 class="title-ks">КС ФОН</h1>
+      <p class="desc">Поставь мажора 2026<br><span class="yellow">ASTRALIS снова проиграли. NAVI снова чемпионы. Ваня снова нет в команде.</span></p>
+      <p class="question">Пойдёшь в КС сегодня?</p>
+      <div class="answer-btns">
+        <button class="btn-yes" onclick="answerVanya('yes')">✅ Да</button>
+        <button class="btn-no" onclick="answerVanya('no')">❌ Нет</button>
+      </div>
+      <div id="vanya-result" class="result-box hidden"></div>
+      <button class="btn-back" onclick="goBack()">← Назад</button>
+    </div>
+  </div>
+
+  <!-- ЭКРАН ИЛЮХИ -->
+  <div id="screen-iluha" class="screen">
+    <div class="main-box">
+      <div class="magor-badge">МАЖОР 2026 🏆</div>
+      <h1 class="title-ks">КС ФОН</h1>
+      <p class="desc">Поставь мажора 2026<br><span class="yellow">MOUZ вылетели в первом раунде. Монеси отказывался идти. Теперь жалеет.</span></p>
+      <p class="question">Пойдёшь в КС сегодня?</p>
+      <div class="answer-btns" id="iluha-btns">
+        <button class="btn-yes" onclick="answerIluha('yes')">✅ Да</button>
+        <button class="btn-no" onclick="answerIluha('no')">❌ Нет</button>
+      </div>
+      <div id="iluha-result" class="result-box hidden"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
