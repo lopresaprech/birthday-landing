@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С ДР, ПИЗДЮЧОК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#070503;
+    --rust:#c1531f;
+    --rust-dark:#5c2a10;
+    --dota-crimson:#c22436;
+    --dota-gold:#f2b544;
+    --glass-teal:#1c3b3a;
+    --glass-cyan:#5ad1c5;
+    --ink:#f4ede2;
+    --ink-dim:#b8a894;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 650px at 10% -5%, rgba(193,83,31,.22), transparent 58%),
+      radial-gradient(ellipse 800px 650px at 95% 15%, rgba(194,36,54,.18), transparent 55%),
+      radial-gradient(ellipse 750px 600px at 50% 105%, rgba(90,209,197,.12), transparent 55%),
+      var(--void);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+  .grain{
+    position:fixed; inset:0; pointer-events:none; opacity:.05; z-index:1; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .blinds{
+    position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.05;
+    background:repeating-linear-gradient(180deg, #000 0px, #000 3px, transparent 3px, transparent 22px);
+  }
+  .wrap{max-width:940px; margin:0 auto; padding:0 20px 90px; position:relative; z-index:2;}
+
+  /* ---------- HERO ---------- */
+  .hero{ text-align:center; padding:70px 0 24px; position:relative; z-index:0; }
+  .hero::before{
+    content:''; position:absolute; top:10px; left:50%; transform:translateX(-50%);
+    width:340px; height:340px; border-radius:50%;
+    background:conic-gradient(from 0deg, transparent, rgba(242,181,68,.18), transparent 30%);
+    filter:blur(2px); z-index:-1; animation:rotate-slow 18s linear infinite;
+  }
+  .hero > *{ position:relative; z-index:1; }
+  @keyframes rotate-slow{ to{ transform:translateX(-50%) rotate(360deg); } }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.32em;
+    text-transform:uppercase; color:var(--glass-cyan); opacity:.9; margin-bottom:14px;
+  }
+  h1{
+    font-family:'Teko',sans-serif; font-weight:700;
+    font-size:clamp(52px,12vw,110px); line-height:.92; letter-spacing:.01em; text-transform:uppercase;
+    color:var(--dota-gold);
+    position:relative;
+  }
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    h1{
+      background:linear-gradient(95deg,var(--rust),var(--dota-gold) 45%,var(--dota-crimson) 80%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+  }
+  h1 .glitch{
+    position:relative; display:inline-block; animation:jitter 4.2s infinite;
+    color:var(--rust);
+  }
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    h1 .glitch{
+      background:linear-gradient(95deg,var(--rust),var(--dota-gold) 45%,var(--dota-crimson) 80%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+  }
+  @keyframes jitter{
+    0%,92%,100%{ transform:translate(0,0); text-shadow:none; }
+    93%{ transform:translate(-2px,1px); text-shadow:2px 0 var(--glass-cyan), -2px 0 var(--dota-crimson); }
+    95%{ transform:translate(2px,-1px); text-shadow:-2px 0 var(--glass-cyan), 2px 0 var(--dota-crimson); }
+    97%{ transform:translate(0,0); text-shadow:none; }
+  }
+  .sub{
+    margin-top:16px; font-size:clamp(15px,2.3vw,18px); color:var(--ink-dim);
+    max-width:600px; margin-inline:auto; line-height:1.6;
+  }
+  .sub b{ color:var(--dota-gold); font-weight:800; }
+  .sub i{ color:var(--glass-cyan); font-style:normal; font-weight:700; }
+  .badges{ display:flex; gap:10px; justify-content:center; margin-top:22px; flex-wrap:wrap; }
+  .badge{
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    padding:8px 16px; border-radius:999px; border:1px solid rgba(242,181,68,.35); color:var(--dota-gold);
+    background:rgba(242,181,68,.06);
+  }
+
+  /* ---------- CARD ---------- */
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px; padding:32px; margin-top:36px; position:relative; overflow:hidden;
+  }
+  .card::after{
+    content:''; position:absolute; inset:0; opacity:.5; pointer-events:none;
+  }
+  .card.rust::after{ background:repeating-linear-gradient(115deg, rgba(193,83,31,.05) 0px, rgba(193,83,31,.05) 2px, transparent 2px, transparent 22px); }
+  .card.dota::after{ background:radial-gradient(circle at 90% -10%, rgba(194,36,54,.15), transparent 55%); }
+  .card.you::after{ background:repeating-linear-gradient(180deg, rgba(90,209,197,.05) 0px, rgba(90,209,197,.05) 2px, transparent 2px, transparent 18px); }
+  .card > *{ position:relative; z-index:1; }
+  .card h2{
+    font-family:'Teko',sans-serif; font-weight:700; font-size:clamp(26px,4.2vw,36px);
+    text-transform:uppercase; letter-spacing:.01em; margin-bottom:4px; line-height:1;
+  }
+  .card .tag{
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.25em;
+    text-transform:uppercase; margin-bottom:16px; display:block;
+  }
+  .card.rust .tag{ color:var(--rust); }
+  .card.dota .tag{ color:var(--dota-gold); }
+  .card.you .tag{ color:var(--glass-cyan); }
+  .card p.desc{ color:var(--ink-dim); font-size:14.5px; margin-bottom:22px; max-width:520px; }
+
+  /* ---------- SHARED WIDGET BUTTON ---------- */
+  .neon-btn{
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:13px; letter-spacing:.08em;
+    text-transform:uppercase; padding:14px 30px; border-radius:999px; border:none; cursor:pointer;
+    color:#0a0512; transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .neon-btn:hover{ transform:translateY(-2px); }
+  .neon-btn:disabled{ opacity:.5; cursor:not-allowed; transform:none; }
+  .btn-rust{ background:linear-gradient(120deg,var(--rust),var(--dota-gold)); box-shadow:0 0 25px rgba(193,83,31,.45); }
+  .btn-rust:hover{ box-shadow:0 0 35px rgba(193,83,31,.65); }
+  .btn-dota{ background:linear-gradient(120deg,var(--dota-gold),var(--dota-crimson)); box-shadow:0 0 25px rgba(242,181,68,.4); }
+  .btn-dota:hover{ box-shadow:0 0 35px rgba(242,181,68,.6); }
+
+  /* ---------- RUST SLOT ---------- */
+  .slot-machine{ display:flex; flex-direction:column; align-items:center; gap:18px; }
+  .reels{
+    display:flex; gap:10px; background:#0a0603; border-radius:14px; padding:14px;
+    box-shadow:inset 0 0 0 2px rgba(193,83,31,.25), 0 0 40px rgba(193,83,31,.2);
+  }
+  .reel{
+    width:74px; height:84px; overflow:hidden; border-radius:8px; background:linear-gradient(180deg,#1a0f08,#0a0603);
+    display:flex; align-items:flex-start; justify-content:center; position:relative;
+    box-shadow:inset 0 8px 12px -6px rgba(0,0,0,.7), inset 0 -8px 12px -6px rgba(0,0,0,.7);
+  }
+  .reel-strip{ display:flex; flex-direction:column; align-items:center; flex:none; }
+  .reel-strip span{ font-size:36px; height:84px; width:74px; display:flex; align-items:center; justify-content:center; flex:none; }
+  .slot-result{ font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--rust); min-height:20px; text-align:center; max-width:460px; }
+
+  /* ---------- DOTA WHEEL ---------- */
+  .wheel-wrap{ display:flex; flex-direction:column; align-items:center; gap:20px; }
+  .wheel-stage{ position:relative; width:270px; height:270px; }
+  .pointer{
+    position:absolute; top:-6px; left:50%; transform:translateX(-50%); z-index:5;
+    width:0; height:0; border-left:13px solid transparent; border-right:13px solid transparent;
+    border-top:22px solid var(--dota-gold); filter:drop-shadow(0 0 8px var(--dota-gold));
+  }
+  #wheel{
+    width:270px; height:270px; border-radius:50%; position:relative; overflow:hidden;
+    box-shadow:0 0 0 6px rgba(255,255,255,.05), 0 0 45px rgba(194,36,54,.4), inset 0 0 30px rgba(0,0,0,.5);
+    transition:transform 4.6s cubic-bezier(.15,.85,.15,1);
+  }
+  .wheel-label{
+    position:absolute; top:50%; left:50%; width:104px; text-align:center;
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:9.5px; color:#1a0a05;
+    line-height:1.2; text-shadow:0 0 2px rgba(255,255,255,.35); pointer-events:none;
+  }
+  .wheel-hub{
+    position:absolute; inset:0; margin:auto; width:42px; height:42px; border-radius:50%;
+    background:var(--void); box-shadow:0 0 0 4px rgba(255,255,255,.1), 0 0 20px rgba(242,181,68,.6);
+    z-index:4; display:flex; align-items:center; justify-content:center; font-size:17px;
+  }
+  .result-line{ font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--dota-gold); min-height:20px; text-align:center; }
+
+  /* ---------- YOU METAPHOR ---------- */
+  .glass-box{
+    border:1px solid rgba(90,209,197,.3); border-radius:16px; padding:24px;
+    background:linear-gradient(180deg, rgba(90,209,197,.06), transparent);
+    position:relative;
+  }
+  .glass-box p{ font-size:15.5px; line-height:1.75; color:var(--ink); }
+  .glass-box p + p{ margin-top:12px; }
+  .glass-box .quote-mark{ font-family:'Teko',sans-serif; font-size:52px; color:var(--glass-cyan); line-height:.5; opacity:.5; display:block; margin-bottom:6px; }
+
+  /* ---------- WISHES ---------- */
+  .wishes-text{ font-size:clamp(16px,2.5vw,18.5px); line-height:1.8; color:var(--ink); }
+  .wishes-text .accent{ color:var(--dota-gold); font-weight:700; }
+  .wishes-text .accent2{ color:var(--glass-cyan); font-weight:700; }
+  .wishes-text .accent3{ color:var(--rust); font-weight:700; }
+  .goo{
+    font-family:'Teko',sans-serif; font-weight:700; font-size:clamp(22px,4vw,32px); text-transform:uppercase;
+    margin-top:16px; color:var(--dota-gold);
+  }
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    .goo{
+      background:linear-gradient(92deg,var(--rust),var(--dota-gold));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ text-align:center; margin-top:56px; padding-top:24px; border-top:1px solid rgba(255,255,255,.08); }
+  footer .sig{ font-family:'Teko',sans-serif; font-weight:600; font-size:16px; letter-spacing:.03em; color:var(--ink-dim); text-transform:uppercase; }
+  footer .sig b{ color:var(--dota-crimson); }
+  footer .date{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-dim); opacity:.6; margin-top:6px; }
+
+  /* ---------- PLAYER ---------- */
+  .player-body{ display:flex; gap:26px; align-items:center; flex-wrap:wrap; }
+  .vinyl-shell{ position:relative; width:170px; height:170px; flex:none; }
+  .vinyl{
+    width:170px; height:170px; border-radius:50%;
+    background:repeating-radial-gradient(circle at center, #0c0c10 0px, #0c0c10 2px, #17151d 3px, #0c0c10 4px);
+    box-shadow:0 0 0 1px rgba(255,255,255,.05), 0 18px 45px rgba(0,0,0,.6), 0 0 40px rgba(90,209,197,.25);
+    position:relative; animation:spin-vinyl 3.2s linear infinite; animation-play-state:paused;
+  }
+  .vinyl::after{
+    content:''; position:absolute; inset:0; margin:auto; width:60px; height:60px; border-radius:50%;
+    background:conic-gradient(from 90deg, var(--glass-cyan), var(--dota-gold), var(--rust), var(--glass-cyan));
+    box-shadow:0 0 22px rgba(90,209,197,.4);
+  }
+  .vinyl::before{
+    content:''; position:absolute; inset:0; margin:auto; width:13px; height:13px; border-radius:50%;
+    background:var(--void); z-index:2; box-shadow:0 0 0 2px rgba(255,255,255,.15);
+  }
+  @keyframes spin-vinyl{ to{ transform:rotate(360deg); } }
+  .tonearm{
+    position:absolute; top:-12px; right:-6px; width:64px; height:64px; transform-origin:88% 12%;
+    transform:rotate(-28deg); transition:transform .5s ease;
+  }
+  .tonearm.playing{ transform:rotate(2deg); }
+  .tonearm svg{ width:100%; height:100%; filter:drop-shadow(0 4px 10px rgba(0,0,0,.5)); }
+  .player-info{ flex:1; min-width:220px; }
+  .track-title{ font-family:'Teko',sans-serif; font-weight:700; font-size:22px; text-transform:uppercase; margin-bottom:2px; }
+  .track-artist{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-dim); margin-bottom:16px; }
+  .controls{ display:flex; align-items:center; gap:14px; }
+  #playBtn{
+    width:50px; height:50px; border-radius:50%; border:none; cursor:pointer; flex:none;
+    background:linear-gradient(135deg,var(--glass-cyan),var(--dota-gold));
+    color:#0a0512; font-size:17px; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 20px rgba(90,209,197,.5); transition:transform .15s ease;
+  }
+  #playBtn:hover{ transform:scale(1.08); }
+  .scrubber{ flex:1; height:6px; border-radius:3px; background:rgba(255,255,255,.08); position:relative; cursor:pointer; overflow:hidden; min-width:80px; }
+  .scrubber-fill{
+    position:absolute; inset:0 auto 0 0; width:0%; background:linear-gradient(90deg,var(--glass-cyan),var(--dota-gold));
+    box-shadow:0 0 10px rgba(90,209,197,.6);
+  }
+  .vol{ width:64px; -webkit-appearance:none; height:4px; border-radius:2px; background:rgba(255,255,255,.15); flex:none; }
+  .vol::-webkit-slider-thumb{ -webkit-appearance:none; width:12px; height:12px; border-radius:50%; background:var(--rust); box-shadow:0 0 8px var(--rust); }
+  .player-hint{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-dim); margin-top:14px; opacity:.75; }
+  #scIframe{ position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+
+  /* ---------- PS NOTE ---------- */
+  .card.ps-note{ border-color:rgba(242,181,68,.35); }
+  .ps-text{ font-size:15.5px; line-height:1.75; color:var(--ink); }
+
+  @media (prefers-reduced-motion: reduce){ h1 .glitch{ animation:none; } .hero::before{ animation:none; } }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:640px){
+    .wrap{ padding:0 14px 60px; }
+    .hero{ padding:48px 0 18px; }
+    h1{ font-size:clamp(30px,11.5vw,64px); }
+    h1 .glitch{ animation:none; }
+    .card{ padding:22px 18px; margin-top:26px; border-radius:16px; }
+    .badges{ gap:8px; }
+    .badge{ padding:6px 12px; font-size:10px; }
+    .wheel-stage{ width:min(240px,80vw); height:min(240px,80vw); }
+    #wheel{ width:100%; height:100%; }
+    .wheel-label{ width:88px; font-size:8.5px; }
+    .wheel-label{ transform-origin:center; }
+    .reel{ width:64px; height:74px; }
+    .reel-strip span{ width:64px; height:74px; font-size:30px; }
+    .player-body{ flex-direction:column; text-align:center; }
+    .player-info{ min-width:0; width:100%; }
+    .controls{ flex-wrap:wrap; justify-content:center; }
+    .vol{ order:3; width:100%; margin-top:8px; }
+  }
+  @media (max-width:380px){
+    .reel{ width:56px; height:66px; }
+    .reel-strip span{ width:56px; height:66px; font-size:26px; }
+    .wheel-stage{ width:min(210px,82vw); height:min(210px,82vw); }
+    .wheel-label{ width:76px; font-size:7.8px; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="blinds"></div>
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">// лор: сегодня официальный рейд-день //</div>
+    <h1><span class="glitch">С ДНЁМ РОЖДЕНИЯ,</span><br>ПИЗДЮЧОК</h1>
+    <p class="sub">пока весь сервер фармит крипов, у тебя ивент поважнее — <b>твой личный левел-ап</b>.
+      сегодня можно всё: и в рейд, и на калибровку, и вообще жить на постоянном <i>бесте оф лак</i> баффе.</p>
+    <div class="badges">
+      <span class="badge">rust survivor</span>
+      <span class="badge">dota tryhard</span>
+      <span class="badge">you enjoyer</span>
+    </div>
+  </section>
+
+  <!-- RUST SLOT -->
+  <div class="card rust">
+    <span class="tag">◆ rust · рейд на удачу</span>
+    <h2>слот на луте с рейда</h2>
+    <p class="desc">крутани барабаны — узнаешь, повезёт ли тебе сегодня в игре так же, как повезло родиться именно 9-го.</p>
+    <div class="slot-machine">
+      <div class="reels">
+        <div class="reel"><div class="reel-strip" id="reel0"></div></div>
+        <div class="reel"><div class="reel-strip" id="reel1"></div></div>
+        <div class="reel"><div class="reel-strip" id="reel2"></div></div>
+      </div>
+      <button class="neon-btn btn-rust" id="spinSlotBtn">крутить рейд</button>
+      <div class="slot-result" id="slotResult">три топора — и ты официально имба на весь вайп</div>
+    </div>
+  </div>
+
+  <!-- DOTA WHEEL -->
+  <div class="card dota">
+    <span class="tag">◆ dota 2 · калибровка</span>
+    <h2>колесо рейтинга</h2>
+    <p class="desc">одна калибровка в год — прямо сейчас. крути, вселенная выдаст тебе ранг на день рождения.</p>
+    <div class="wheel-wrap">
+      <div class="wheel-stage">
+        <div class="pointer"></div>
+        <div id="wheel"></div>
+        <div class="wheel-hub">🎯</div>
+      </div>
+      <button class="neon-btn btn-dota" id="spinWheelBtn">крутить калибровку</button>
+      <div class="result-line" id="wheelResult">жду клика, саппорт кэрри не понесёт сам себя</div>
+    </div>
+  </div>
+
+  <!-- YOU METAPHOR -->
+  <div class="card you">
+    <span class="tag">◆ сериал «ты» · метафора дня</span>
+    <h2>джо бы тобой гордился</h2>
+    <div class="glass-box">
+      <span class="quote-mark">”</span>
+      <p>джо голдберг наблюдает за одним человеком через стекло книжного магазина. ты — за всей своей бандой сразу,
+        просто без стеклянного ящика в подвале и без криминала, будем честны.</p>
+      <p>та же преданность, та же готовность сорваться среди ночи, если у кента беда — только у тебя это называется
+        нормальной <span style="color:var(--glass-cyan); font-weight:700;">дружбой</span>, а не сериалом на нетфликсе.
+        поздравляем с тем, что твой стиль любви к людям хотя бы не приводит к три сезона расследований.</p>
+    </div>
+  </div>
+
+  <!-- WISHES -->
+  <div class="card">
+    <span class="tag">◆ лично от меня</span>
+    <h2>чё хочу сказать</h2>
+    <p class="wishes-text">
+      желаю тебе <span class="accent">имбового рейта</span> в доте, чтобы рейды в расте всегда заканчивались лутом, а не позором,
+      и чтобы в жизни было столько же саспенса, сколько в твоём любимом сериале, но без трупов в подвале.
+      слушай родителей и сестру, они плохого не посоветуют, даже если кажется, что ты уже всё сам знаешь.
+      а ещё — чую, скоро из тебя <span class="accent3">вылупится личинус</span>, готовься, эволюция не ждёт.
+      ну и главное: пивчикк с меня, пойдём как-нибудь <span class="accent2">пить пиздючек</span> и на рыбалочку —
+      обмоем твой левел-ап по-нормальному.
+    </p>
+    <p class="goo">GG WP, с днюхой! 🎂</p>
+  </div>
+
+  <!-- PLAYER -->
+  <div class="card you">
+    <span class="tag">◆ трек дня</span>
+    <h2>вою на луну</h2>
+    <div class="player-body">
+      <div class="vinyl-shell">
+        <div class="vinyl" id="vinyl"></div>
+        <div class="tonearm" id="tonearm">
+          <svg viewBox="0 0 70 70"><line x1="60" y1="8" x2="14" y2="52" stroke="#e2d8c8" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="8" r="7" fill="#e2d8c8"/><circle cx="14" cy="52" r="4" fill="var(--glass-cyan)"/></svg>
+        </div>
+      </div>
+      <div class="player-info">
+        <div class="track-title">Вою на луну</div>
+        <div class="track-artist">newlightchildsss — via SoundCloud</div>
+        <div class="controls">
+          <button id="playBtn" aria-label="play/pause">▶</button>
+          <div class="scrubber" id="scrubber"><div class="scrubber-fill" id="scrubberFill"></div></div>
+          <input type="range" class="vol" id="vol" min="0" max="100" value="80">
+        </div>
+        <div class="player-hint">жми на пластинку или ▶ — где-то браузер блочит автозапуск звука без клика, это не баг</div>
+      </div>
+    </div>
+    <iframe id="scIframe" allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fnewlightchildsss%2Fvoyu-na-lunu&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"></iframe>
+  </div>
+
+  <!-- PS NOTE -->
+  <div class="card ps-note">
+    <span class="tag">◆ p.s.</span>
+    <p class="ps-text">не думай что я забыл:) ты же меня поздравил маленький, я чутка перепил и был занят делами взрослыми))))
+      но не переживай, я тут — с днюхой! 🎉</p>
+  </div>
+
+  <footer>
+    <div class="sig">made <b>by FronZ1</b> — специально для Пиздючка</div>
+    <div class="date">rust · dota · you — три религии, один день рождения. теперь ещё и 9 число</div>
+  </footer>
+
+</div>
+
+<script src="https://w.soundcloud.com/player/api.js"></script>
+<script>
+/* ============ PLAYER ============ */
+let scWidget, scReady = false, isPlaying = false;
+const playBtn = document.getElementById('playBtn');
+const vinylEl = document.getElementById('vinyl');
+const tonearmEl = document.getElementById('tonearm');
+const scrubberEl = document.getElementById('scrubber');
+const scrubberFillEl = document.getElementById('scrubberFill');
+const volSliderEl = document.getElementById('vol');
+
+window.addEventListener('load', () => {
+  const iframe = document.getElementById('scIframe');
+  scWidget = SC.Widget(iframe);
+  scWidget.bind(SC.Widget.Events.READY, () => {
+    scReady = true;
+    scWidget.setVolume(80);
+    // пробуем автозапуск — часть браузеров блокирует звук без клика пользователя
+    scWidget.play();
+  });
+  scWidget.bind(SC.Widget.Events.PLAY, () => setPlayingState(true));
+  scWidget.bind(SC.Widget.Events.PAUSE, () => setPlayingState(false));
+  scWidget.bind(SC.Widget.Events.FINISH, () => { scWidget.seekTo(0); scWidget.play(); });
+  scWidget.bind(SC.Widget.Events.PLAY_PROGRESS, (data) => {
+    scrubberFillEl.style.width = data.relativePosition * 100 + '%';
+  });
+});
+
+function setPlayingState(playing){
+  isPlaying = playing;
+  playBtn.textContent = playing ? '❚❚' : '▶';
+  vinylEl.style.animationPlayState = playing ? 'running' : 'paused';
+  tonearmEl.classList.toggle('playing', playing);
+}
+
+playBtn.addEventListener('click', () => {
+  if(!scReady) return;
+  isPlaying ? scWidget.pause() : scWidget.play();
+});
+vinylEl.addEventListener('click', () => playBtn.click());
+
+scrubberEl.addEventListener('click', (e) => {
+  if(!scReady) return;
+  const rect = scrubberEl.getBoundingClientRect();
+  const ratio = (e.clientX - rect.left) / rect.width;
+  scWidget.getDuration((dur) => scWidget.seekTo(dur * ratio));
+});
+volSliderEl.addEventListener('input', () => {
+  if(scReady) scWidget.setVolume(parseInt(volSliderEl.value,10));
+});
+
+/* ============ RUST SLOT ============ */
+const slotSymbols = ['🪓','⛏️','🔫','🧱','🎒','💊'];
+const slotMessages = {
+  triple: [
+    'три в ряд — рейд удался, весь лут твой, соседи плачут',
+    'джекпот! это тимбилдинг уровня "весь клан несёт тебе саплаи"',
+  ],
+  double: [
+    'два из трёх — база устояла, но забор подлатай на всякий',
+    'почти вайп, но обошлось. сегодня твой день, тебе можно',
+  ],
+  none: [
+    'мимо, рейд не зашёл — зато именинник сегодня непробиваемый',
+    'лута нет, зато кд на удачу сегодня не действует — с др как-никак',
+  ]
+};
+
+function buildStrip(el, finalSymbol){
+  el.innerHTML = '';
+  const stripLength = 22;
+  for(let i=0;i<stripLength;i++){
+    const s = document.createElement('span');
+    s.textContent = slotSymbols[Math.floor(Math.random()*slotSymbols.length)];
+    el.appendChild(s);
+  }
+  const finalSpan = document.createElement('span');
+  finalSpan.textContent = finalSymbol;
+  el.appendChild(finalSpan);
+  return stripLength;
+}
+
+[0,1,2].forEach((reelIdx) => {
+  const strip = document.getElementById('reel'+reelIdx);
+  const span = document.createElement('span');
+  span.textContent = slotSymbols[Math.floor(Math.random()*slotSymbols.length)];
+  strip.appendChild(span);
+});
+
+let slotSpinning = false;
+document.getElementById('spinSlotBtn').addEventListener('click', () => {
+  if(slotSpinning) return;
+  slotSpinning = true;
+  const btn = document.getElementById('spinSlotBtn');
+  btn.disabled = true;
+  document.getElementById('slotResult').textContent = 'закидываем чармы, крутим барабаны...';
+
+  const finals = [
+    slotSymbols[Math.floor(Math.random()*slotSymbols.length)],
+    slotSymbols[Math.floor(Math.random()*slotSymbols.length)],
+    slotSymbols[Math.floor(Math.random()*slotSymbols.length)],
+  ];
+
+  [0,1,2].forEach((reelIdx) => {
+    const strip = document.getElementById('reel'+reelIdx);
+    const stripLength = buildStrip(strip, finals[reelIdx]);
+    strip.style.transition = 'none';
+    strip.style.transform = 'translateY(0px)';
+    void strip.offsetHeight;
+    const distance = stripLength * 84;
+    const duration = 1.2 + reelIdx*0.5;
+    strip.style.transition = `transform ${duration}s cubic-bezier(.2,.8,.2,1)`;
+    strip.style.transform = `translateY(-${distance}px)`;
+  });
+
+  setTimeout(() => {
+    let msg;
+    if(finals[0]===finals[1] && finals[1]===finals[2]){
+      msg = slotMessages.triple[Math.floor(Math.random()*slotMessages.triple.length)];
+    } else if(finals[0]===finals[1] || finals[1]===finals[2] || finals[0]===finals[2]){
+      msg = slotMessages.double[Math.floor(Math.random()*slotMessages.double.length)];
+    } else {
+      msg = slotMessages.none[Math.floor(Math.random()*slotMessages.none.length)];
+    }
+    document.getElementById('slotResult').textContent = msg;
+    btn.disabled = false;
+    slotSpinning = false;
+  }, 2900);
+});
+
+/* ============ DOTA WHEEL ============ */
+const wheelSegments = [
+  { text:'ИММОРТАЛ ПО ЖИЗНИ', color:'#c22436' },
+  { text:'0 ФИДОВ СЕГОДНЯ', color:'#f2b544' },
+  { text:'КРИПЫ — ТВОИ ДРУЗЬЯ', color:'#c1531f' },
+  { text:'РЕЙТ ТОЛЬКО ВВЕРХ', color:'#5ad1c5' },
+  { text:'ТИМА НЕ СЛИВАЕТ', color:'#c22436' },
+  { text:'РАПИРА ЗАШЛА', color:'#f2b544' },
+  { text:'МИД ВСЕГДА ТВОЙ', color:'#c1531f' },
+  { text:'GG EASY, С ДР', color:'#5ad1c5' },
+];
+const segAngle = 360 / wheelSegments.length;
+const wheelEl = document.getElementById('wheel');
+let gradientStr = wheelSegments.map((s,i) => `${s.color} ${i*segAngle}deg ${(i+1)*segAngle}deg`).join(', ');
+wheelEl.style.background = `conic-gradient(${gradientStr})`;
+const wheelRadiusPx = wheelEl.getBoundingClientRect().width * 0.34;
+wheelSegments.forEach((s,i)=>{
+  const label = document.createElement('div');
+  label.className = 'wheel-label';
+  label.textContent = s.text;
+  const midAngle = i*segAngle + segAngle/2;
+  label.style.transform = `translate(-50%,-50%) rotate(${midAngle}deg) translateY(-${wheelRadiusPx}px)`;
+  wheelEl.appendChild(label);
+});
+
+let wheelRotation = 0;
+let wheelSpinning = false;
+document.getElementById('spinWheelBtn').addEventListener('click', () => {
+  if(wheelSpinning) return;
+  wheelSpinning = true;
+  const btn = document.getElementById('spinWheelBtn');
+  btn.disabled = true;
+  document.getElementById('wheelResult').textContent = 'калибровка идёт, не закрывай клиент...';
+  const extraSpins = 5 + Math.floor(Math.random()*3);
+  const randomStop = Math.random()*360;
+  wheelRotation += extraSpins*360 + randomStop;
+  wheelEl.style.transform = `rotate(${wheelRotation}deg)`;
+  setTimeout(() => {
+    const normalized = ((360 - (wheelRotation % 360)) % 360);
+    const idx = Math.floor(normalized / segAngle) % wheelSegments.length;
+    document.getElementById('wheelResult').textContent = '🎉 калибровка выдала: ' + wheelSegments[idx].text;
+    btn.disabled = false;
+    wheelSpinning = false;
+  }, 4700);
+});
+</script>
+</body>
+</html>
