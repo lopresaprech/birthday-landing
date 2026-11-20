@@ -1,0 +1,12 @@
+const menuBtn=document.getElementById('menuBtn');
+const nav=document.getElementById('nav');
+menuBtn?.addEventListener('click',()=>nav.classList.toggle('open'));
+nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const themeToggle=document.getElementById('themeToggle');
+themeToggle?.addEventListener('click',()=>{document.body.classList.toggle('light');themeToggle.textContent=document.body.classList.contains('light')?'☀':'◐'});
+const glow=document.getElementById('cursorGlow');
+window.addEventListener('pointermove',e=>{if(glow&&matchMedia('(pointer:fine)').matches){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'}});
+const copyButton=document.getElementById('copyButton');
+copyButton?.addEventListener('click',async()=>{const profile='Олег — кандидат із досвідом у банківській сфері та digital-проєктах. Розвиваю AI Creating та автоматизацію, цікавлюся цифровими інструментами й оптимізацією процесів.';const note=document.getElementById('copyNote');try{await navigator.clipboard.writeText(profile);note.textContent='КОРОТКИЙ ПРОФІЛЬ СКОПІЙОВАНО';}catch{note.textContent='СКОПІЮВАННЯ НЕДОСТУПНЕ У ЦЬОМУ БРАУЗЕРІ';}setTimeout(()=>note.textContent='TELEGRAM · PHONE · OPEN TO OPPORTUNITIES',3000)});
+const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.section-head,.pipe-step,.project-card,.timeline-item,.about-grid').forEach(el=>{el.classList.add('reveal');revealObserver.observe(el)});
